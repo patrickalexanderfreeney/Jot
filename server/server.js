@@ -8,11 +8,15 @@ const db = require('./db/db');
 db.authenticate()
   .then(() => {
     console.log('Connected to db!');
+    // db.sync();
   })
   .catch(err => {
     console.error('Not Connected to db!:', err);
-  });
+  })
+  .catch(err => console.log(err));
+db.sync().then(result => console.log(result));
 
+// Middleware
 app.use(express.json({ extended: false }));
 
 app.get('/', (req, res) => res.send('INDEX'));
