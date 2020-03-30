@@ -8,7 +8,6 @@ const db = require('./db/db');
 db.authenticate()
   .then(() => {
     console.log('Connected to db!');
-    // db.sync();
   })
   .catch(err => {
     console.error('Not Connected to db!:', err);

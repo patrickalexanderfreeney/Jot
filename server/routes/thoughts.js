@@ -1,7 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const db = require('../db/db');
-const Thought = require('../models/Thought');
 const thoughtsController = require('../controllers/thoughts');
 
 // get all
