@@ -3,9 +3,9 @@ const Thought = require('../models/Thought');
 exports.getAllThoughts = async (req, res, next) => {
   try {
     const thoughts = await Thought.findAll();
-    res.json(thoughts);
+    res.send(thoughts);
   } catch (err) {
-    res.status(500).json({ msg: err.message });
+    res.status(500).send({ msg: err.message });
   }
 };
 
@@ -14,7 +14,7 @@ exports.getOneThought = async (req, res, next) => {
     const thought = await Thought.findById(req.params.id);
     res.send(thought);
   } catch (err) {
-    res.status(500).json({ msg: err.message });
+    res.status(500).send({ msg: err.message });
   }
 };
 
@@ -23,14 +23,12 @@ exports.createThought = async (req, res, next) => {
 
   try {
     const newThought = await Thought.create({
-      title: title,
-      body: body,
-      tags: tags
+      title, body, tags
     });
     res.status(201).json(newThought);
 
   } catch (error) {
-    res.status(500).json({ msg: err.message });
+    res.status(500).send({ msg: err.message });
   }
 };
 
