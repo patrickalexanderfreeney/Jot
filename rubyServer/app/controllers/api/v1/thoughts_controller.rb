@@ -3,7 +3,7 @@ class Api::V1::ThoughtsController < ApplicationController
     
     def index
         @thoughts = Thought.all
-        render json: @thoughts, include: :comments
+        render json: @thoughts
     end
 
     def show
