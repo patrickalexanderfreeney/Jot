@@ -1,5 +1,5 @@
 class Api::V1::ThoughtsController < ApplicationController
-    skip_before_action :check_authentication
+    # skip_before_action :check_authentication
     
     def index
         @thoughts = Thought.all

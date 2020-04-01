@@ -1,17 +1,21 @@
 import React, { useEffect, useState } from 'react';
-import './App.css';
+import axios from 'axios';
+import ThoughtContainer from './components/ThoughtsContainer';
+// import './App.css';
 
 const App = () => {
-  [thoughts, setThoughts] = useState('');
+  const [thoughts, setThoughts] = useState([]);
 
   useEffect(() => {
     getThoughts();
   }, []);
 
   const getThoughts = async () => {
-    const response = await fetch('https://localhost:5005/');
-    const data = await response.json();
+    const response = await axios.get('http://localhost:3000/api/v1/thoughts');
+
+    const data = await response.data;
     setThoughts(data);
+    // console.log(response.data);
   };
   return (
     <>

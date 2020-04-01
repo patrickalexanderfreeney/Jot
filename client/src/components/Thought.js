@@ -1,7 +1,14 @@
 import React from 'react';
 
-const Thought = ({}) => {
-  return <p>Thought here!</p>;
+const Thought = ({ title, body, tags }) => {
+  return (
+    <>
+      <p>Thought here!</p>
+      <p>{title}</p>
+      <p>{body}</p>
+      <p>{tags}</p>
+    </>
+  );
 };
 
 export default Thought;

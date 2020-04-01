@@ -5,7 +5,6 @@ class CreateThoughts < ActiveRecord::Migration[6.0]
       t.string :body
       t.string :tags
       t.integer :user_id
-      t.datetime :created
 
       t.timestamps
     end
