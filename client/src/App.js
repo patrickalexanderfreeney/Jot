@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import Navbar from './components/Navbar';
+import SearchBar from './components/SearchBar';
 import ThoughtContainer from './components/ThoughtsContainer';
-// import './App.css';
+import ThoughtForm from './components/ThoughtForm';
+import './App.css';
 
 const App = () => {
   const [thoughts, setThoughts] = useState([]);
@@ -19,8 +22,11 @@ const App = () => {
   };
   return (
     <>
+      <Navbar />
+      <SearchBar />
       <h1>Welcome to Thoughts</h1>
       <ThoughtContainer thoughts={thoughts} />
+      <ThoughtForm />
     </>
   );
 };

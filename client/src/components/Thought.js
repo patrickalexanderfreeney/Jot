@@ -7,6 +7,7 @@ const Thought = ({ title, body, tags }) => {
       <p>{title}</p>
       <p>{body}</p>
       <p>{tags}</p>
+      <hr />
     </>
   );
 };
