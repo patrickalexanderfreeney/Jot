@@ -1,16 +1,12 @@
 import React from 'react';
+import { Nav, Logo } from '../styledElements';
 
 const Navbar = () => {
   return (
     <>
-      <nav class='navbar'>
-        <a class='logo' href='#landing'>
-          Thoughts
-        </a>
-        <ul>
-          <li>About</li>
-        </ul>
-      </nav>
+      <Nav>
+        <Logo>Thoughts</Logo>
+      </Nav>
     </>
   );
 };

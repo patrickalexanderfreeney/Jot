@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import styled from 'styled-components';
+import { Section } from './styledElements';
+
 import Navbar from './components/Navbar';
+import ThoughtsLanding from './components/ThoughtsLanding';
 import SearchBar from './components/SearchBar';
 import ThoughtContainer from './components/ThoughtsContainer';
 import ThoughtForm from './components/ThoughtForm';
@@ -21,13 +25,18 @@ const App = () => {
     // console.log(response.data);
   };
   return (
-    <>
+    <div className='App'>
       <Navbar />
+
+      <ThoughtsLanding />
+
       <SearchBar />
       <h1>Welcome to Thoughts</h1>
+
       <ThoughtContainer thoughts={thoughts} />
+
       <ThoughtForm />
-    </>
+    </div>
   );
 };
 

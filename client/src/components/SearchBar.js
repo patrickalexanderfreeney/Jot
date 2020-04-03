@@ -6,7 +6,7 @@ const SearchBar = () => {
       <form>
         <label>
           Tags:
-          <input type='text' name='search' placeholder='search' />
+          <input type='text' name='search' placeholder='Search...' />
         </label>
         <input type='submit' value='Submit' />
       </form>
