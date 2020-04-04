@@ -12,11 +12,11 @@ const App = () => {
   return (
     <BrowserRouter>
       <Switch>
-        <Route path='/' component={<ThoughtsLanding />} />
-        <Route path='/login' component={<ThoughtsLogIn />} />
-        <Route path='/signup' component={<ThoughtsSignUp />} />
-        <Route path='/home' component={<ThoughtsPage />} />
-        <Route path='/createthough' component={<ThoughtForm />} />
+        <Route path='/' exact component={ThoughtsLanding} />
+        <Route path='/login' exact component={ThoughtsLogIn} />
+        <Route path='/signup' exact component={ThoughtsSignUp} />
+        <Route path='/home' exact component={ThoughtsPage} />
+        <Route path='/createthough' exact component={ThoughtForm} />
       </Switch>
     </BrowserRouter>
   );
