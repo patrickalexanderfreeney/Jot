@@ -2,8 +2,8 @@ class JotsController < ApplicationController
     # skip_before_action :check_authentication
     
     def index
-        @thoughts = Jot.all
-        render json: @thoughts
+        @jots = Jot.all
+        render json: @jots
     end
 
     def show

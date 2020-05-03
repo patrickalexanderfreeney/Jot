@@ -5,21 +5,13 @@ import SignUp from './components/SignUp';
 import LogIn from './components/LogIn';
 import Landing from './components/Landing';
 import Home from './components/Home';
-import { AuthContext } from './context/auth';
+import AuthDataProvider from './context/auth';
 import GlobalStyle from './styles/GlobalStyle';
 
-const App = () => {
-	const existingTokens = JSON.parse(localStorage.getItem('tokens'));
-	const [authTokens, setAuthTokens] = useState(existingTokens);
-
-	const setTokens = (data) => {
-		localStorage.setItem('tokens', JSON.stringify(data));
-		setAuthTokens(data);
-	};
-
+const App = (props) => {
 	return (
-		<AuthContext.Provider value={{ authTokens, setAuthTokens: setTokens }}>
-			<Router>
+		<Router>
+			<AuthDataProvider>
 				<>
 					<Switch>
 						<Route exact path='/' component={Landing} />
@@ -29,8 +21,8 @@ const App = () => {
 					</Switch>
 					<GlobalStyle />
 				</>
-			</Router>
-		</AuthContext.Provider>
+			</AuthDataProvider>
+		</Router>
 	);
 };
 

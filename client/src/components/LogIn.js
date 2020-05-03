@@ -1,8 +1,15 @@
 import React, { useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
-import { Form, Label, Input, Button } from '../styles/Containers';
-import { Card } from '../styles/AuthForm';
-import { useAuth } from '../context/auth';
+import {
+	Section,
+	Card,
+	Form,
+	Img,
+	Label,
+	Input,
+	Button
+} from '../styles/AuthForm';
+import { useAuthDataContext } from '../context/auth';
 import axios from 'axios';
 import LogoSrc from '../styles/mediaAssets/jot-logo.ico';
 
@@ -11,7 +18,11 @@ const LogIn = (props) => {
 	const [password, setPassword] = useState('');
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
 	const [isError, setIsError] = useState(false);
-	const { setAuthTokens } = useAuth();
+	const { user, onLogIn } = useAuthDataContext();
+
+	if (user) {
+		return <Redirect to='/home' />;
+	}
 
 	const logIn = async (e) => {
 		e.preventDefault();
@@ -30,10 +41,14 @@ const LogIn = (props) => {
 			},
 			config
 		);
-		// const data = await response.data;
+		console.log(response);
 
 		if (response.status === 200) {
-			setAuthTokens(response.data);
+			localStorage.username = response.data.user.username;
+			localStorage.password = response.data.user.password_digest;
+			localStorage.tokens = response.data.user.token;
+			localStorage.id = response.data.user.id;
+			onLogIn(response.data);
 			setIsLoggedIn(true);
 		} else {
 			setIsError(true);
@@ -45,42 +60,41 @@ const LogIn = (props) => {
 	}
 
 	return (
-		<>
-			{/* <Card> */}
-			<div>
-				{' '}
-				<img src={LogoSrc} alt='' />{' '}
-			</div>
-			<Form top='33%' left='37%' width='400px'>
-				<Label>Please Log In</Label>
-
-				<label>
-					Username:
-					<Input
-						value={username}
-						onChange={(e) => {
-							setUsername(e.target.value);
-						}}
-						width='100%'
-						type='text'
-					/>
-				</label>
-				<label>
-					Password:
-					<Input
-						type='password'
-						value={password}
-						onChange={(e) => {
-							setPassword(e.target.value);
-						}}
-						width='100%'
-					/>
-				</label>
-				<Button onClick={logIn}>LogIn</Button>
-			</Form>
-			{/* <Link to='/signup'>Don't have an account?</Link> */}
-			{/* </Card> */}
-		</>
+		<Section>
+			<Card>
+				<div>
+					<Img src={LogoSrc} alt='Jot Logo with blue gradient feather' />
+				</div>
+				<h2>Log In</h2>
+				<Form>
+					<Label>
+						Username:
+						<Input
+							value={username}
+							onChange={(e) => {
+								setUsername(e.target.value);
+							}}
+							width='100%'
+							type='text'
+							placeholder='username'
+						/>
+					</Label>
+					<Label>
+						Password:
+						<Input
+							type='password'
+							value={password}
+							onChange={(e) => {
+								setPassword(e.target.value);
+							}}
+							placeholder='password'
+						/>
+					</Label>
+					<Button onClick={logIn}>Submit</Button>
+				</Form>
+				<Link to='/signup'>Don't have an account?</Link>
+			</Card>
+		</Section>
 	);
 };
 export default LogIn;

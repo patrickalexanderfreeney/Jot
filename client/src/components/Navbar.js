@@ -1,14 +1,19 @@
 import React from 'react';
-import { Nav, LogoImg } from '../styles/NavBar';
+import { Redirect } from 'react-router-dom';
+import { Nav, LogoImg, Button } from '../styles/NavBar';
 import LogoSrc from '../styles/mediaAssets/jot-logo.ico';
+import { useAuthDataContext } from '../context/auth';
+
 const NavBar = (props) => {
-  return (
-    <>
-      <Nav>
-        <LogoImg src={LogoSrc}></LogoImg>
-      </Nav>
-    </>
-  );
+	const { user, onLogout } = useAuthDataContext();
+	return (
+		<>
+			<Nav>
+				<LogoImg src={LogoSrc}></LogoImg>
+				<Button onClick={onLogout}>Log out</Button>
+			</Nav>
+		</>
+	);
 };
 
 export default NavBar;

@@ -1,21 +1,22 @@
 import React from 'react';
 import { Route, Link, Redirect } from 'react-router-dom';
-import { useAuth } from '../context/auth';
+import { useAuthDataContext } from '../context/auth';
 
 export default function PrivateRoute({ component: Component, ...rest }) {
-  const { authTokens } = useAuth();
-  return (
-    <Route
-      {...rest}
-      render={(props) =>
-        authTokens ? (
-          <Component {...props} />
-        ) : (
-          <Redirect
-            to={{ pathname: '/login', state: { referer: props.location } }}
-          />
-        )
-      }
-    />
-  );
+	const { user } = useAuthDataContext();
+	// const finalComponent = user ? component : SignInPage;
+	return (
+		<Route
+			{...rest}
+			render={(props) =>
+				user ? (
+					<Component {...props} />
+				) : (
+					<Redirect
+						to={{ pathname: '/login', state: { referer: props.location } }}
+					/>
+				)
+			}
+		/>
+	);
 }

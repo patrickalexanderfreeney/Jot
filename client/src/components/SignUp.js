@@ -1,43 +1,54 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Form, Button, Label } from '../styles/Containers';
-import { Card, Input } from '../styles/AuthForm';
+import {
+	Section,
+	Card,
+	Img,
+	Form,
+	Label,
+	Input,
+	Button
+} from '../styles/AuthForm';
+import LogoSrc from '../styles/mediaAssets/jot-logo.ico';
 
 const SignUp = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  return (
-    <>
-      <Card>
-        <h2>Sign Up</h2>
-        <Form>
-          <Label>
-            Email:
-            <Input
-              onChange={(e) => {
-                setEmail(e.target.value);
-              }}
-              value={email}
-              type='text'
-              placeholder='email'
-            />
-          </Label>
-          <Label>
-            Password:
-            <Input
-              onChange={(e) => {
-                setPassword(e.target.value);
-              }}
-              value={password}
-              type='password'
-              placeholder='password'
-            />
-          </Label>
-          <Button>SignUp</Button>
-          <Link to='/login'>Already have an account?</Link>
-        </Form>
-      </Card>
-    </>
-  );
+	const [username, setUsername] = useState('');
+	const [password, setPassword] = useState('');
+	return (
+		<Section>
+			<Card>
+				<div>
+					<Img src={LogoSrc} alt='Jot Logo with blue gradient feather' />
+				</div>
+				<h2>Sign Up</h2>
+				<Form>
+					<Label>
+						Username:
+						<Input
+							onChange={(e) => {
+								setUsername(e.target.value);
+							}}
+							value={username}
+							type='text'
+							placeholder='username'
+						/>
+					</Label>
+					<Label>
+						Password:
+						<Input
+							onChange={(e) => {
+								setPassword(e.target.value);
+							}}
+							value={password}
+							type='password'
+							placeholder='password'
+						/>
+					</Label>
+					<Button>Submit</Button>
+				</Form>
+				<Link to='/login'>Already have an account?</Link>
+			</Card>
+		</Section>
+	);
 };
 export default SignUp;
