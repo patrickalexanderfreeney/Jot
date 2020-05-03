@@ -1,6 +1,6 @@
-class CreateThoughts < ActiveRecord::Migration[6.0]
+class CreateJots < ActiveRecord::Migration[6.0]
   def change
-    create_table :thoughts do |t|
+    create_table :jots do |t|
       t.string :title
       t.string :body
       t.string :tags

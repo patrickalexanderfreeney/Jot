@@ -1,16 +1,20 @@
 import React from 'react';
+import { SearchDiv, Input } from '../styles/Containers';
 
 const SearchBar = () => {
   return (
-    <>
+    <SearchDiv>
       <form>
         <label>
-          Tags:
-          <input type='text' name='search' placeholder='Search...' />
+          <Input
+            width='100%'
+            type='text'
+            name='search'
+            placeholder='Search...'
+          />
         </label>
-        <input type='submit' value='Submit' />
       </form>
-    </>
+    </SearchDiv>
   );
 };
 

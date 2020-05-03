@@ -1,11 +1,12 @@
 import React from 'react';
 
-const ThoughtsLanding = () => {
+const Landing = () => {
   return (
     <>
       <h3>Welcome to Thoughts!</h3>
+      <p>A place to share your thoughts</p>
     </>
   );
 };
 
-export default ThoughtsLanding;
+export default Landing;

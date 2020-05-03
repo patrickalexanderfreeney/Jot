@@ -1,7 +1,14 @@
 import React from 'react';
-
-const Navbar = () => {
-  return <></>;
+import { Nav, LogoImg } from '../styles/NavBar';
+import LogoSrc from '../styles/mediaAssets/jot-logo.ico';
+const NavBar = (props) => {
+  return (
+    <>
+      <Nav>
+        <LogoImg src={LogoSrc}></LogoImg>
+      </Nav>
+    </>
+  );
 };
 
-export default Navbar;
+export default NavBar;

@@ -1,25 +1,37 @@
-import React from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import './App.css';
-
-import ThoughtsSignUp from './components/ThoughtsSignUp';
-import ThoughtsLogIn from './components/ThoughtsLogIn';
-import ThoughtsLanding from './components/ThoughtsLanding';
-import ThoughtsPage from './components/ThoughtsPage';
-import ThoughtForm from './components/ThoughtForm';
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import PrivateRoute from './components/PrivateRoute';
+import SignUp from './components/SignUp';
+import LogIn from './components/LogIn';
+import Landing from './components/Landing';
+import Home from './components/Home';
+import { AuthContext } from './context/auth';
+import GlobalStyle from './styles/GlobalStyle';
 
 const App = () => {
-  return (
-    <BrowserRouter>
-      <Switch>
-        <Route path='/' exact component={ThoughtsLanding} />
-        <Route path='/login' exact component={ThoughtsLogIn} />
-        <Route path='/signup' exact component={ThoughtsSignUp} />
-        <Route path='/home' exact component={ThoughtsPage} />
-        <Route path='/createthough' exact component={ThoughtForm} />
-      </Switch>
-    </BrowserRouter>
-  );
+	const existingTokens = JSON.parse(localStorage.getItem('tokens'));
+	const [authTokens, setAuthTokens] = useState(existingTokens);
+
+	const setTokens = (data) => {
+		localStorage.setItem('tokens', JSON.stringify(data));
+		setAuthTokens(data);
+	};
+
+	return (
+		<AuthContext.Provider value={{ authTokens, setAuthTokens: setTokens }}>
+			<Router>
+				<>
+					<Switch>
+						<Route exact path='/' component={Landing} />
+						<Route exact path='/login' component={LogIn} />
+						<Route exact path='/signup' component={SignUp} />
+						<PrivateRoute exact path='/home' component={Home} />
+					</Switch>
+					<GlobalStyle />
+				</>
+			</Router>
+		</AuthContext.Provider>
+	);
 };
 
 export default App;

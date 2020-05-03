@@ -1,14 +1,8 @@
-class Api::V1::UsersController < ApplicationController
+class UsersController < ApplicationController
     skip_before_action :check_authentication, only: [:create]
 
-    def index
-        users = User.all
-        render json: users, include: [:thoughts]
-        
-    end
-
     def show
-        user = User.find(params[:id])
+        user = User.find_by(id: params[:id])
         render json: user, except: [:created_at, :updated_at]
     end
 
@@ -16,7 +10,6 @@ class Api::V1::UsersController < ApplicationController
         user = User.new(user_params)
         if user.valid?
             user.save
-        
             render json: {user: UserSerializer.new(user)}, status: :created
         else
             render json: {error: 'Failed to create user.'}, status: :not_acceptable
@@ -26,11 +19,16 @@ class Api::V1::UsersController < ApplicationController
     def update
         user = User.find(params[:id])
         user.update(user_params)
-        render json: user, except: [:created_at, :updated_at]
+        render json: {user: UserSerializer.new(user), message: "User updated!"}
+    end
+
+    def destroy
+        user = User.find(params[:id])
+        user.destroy
     end
     
     private
     def user_params
-        params.require(:user).permit( :name, :email, :password)
+        params.permit( :username, :password)
     end
 end

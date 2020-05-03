@@ -1,4 +1,4 @@
-class PostSerializer <  ActiveModel::Serializer 
+class JotSerializer <  ActiveModel::Serializer 
     attributes :title, :body, :tags, :user_id
 end
 

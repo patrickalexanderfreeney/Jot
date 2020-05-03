@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-export const Button = styled.a`
+export const Button = styled.button`
   height: 48px;
   line-height: 48 px;
   padding: 10px 34px;
