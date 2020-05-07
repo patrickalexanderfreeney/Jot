@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import {
 	Section,
@@ -9,7 +9,7 @@ import {
 	Input,
 	Button
 } from '../styles/AuthForm';
-import { useAuthDataContext } from '../context/auth';
+import { useAuthDataContext } from '../contexts/auth';
 import axios from 'axios';
 import LogoSrc from '../styles/mediaAssets/jot-logo.ico';
 
