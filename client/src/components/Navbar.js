@@ -2,10 +2,10 @@ import React from 'react';
 import { Redirect } from 'react-router-dom';
 import { Nav, LogoImg, Button } from '../styles/NavBar';
 import LogoSrc from '../styles/mediaAssets/jot-logo.ico';
-import { useAuthDataContext } from '../contexts/auth';
+import { StoreContext } from './store';
 
 const NavBar = (props) => {
-	const { user, onLogout } = useAuthDataContext();
+	const { user, onLogout } = StoreContext();
 	return (
 		<>
 			<Nav>

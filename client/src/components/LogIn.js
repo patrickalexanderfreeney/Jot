@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import {
 	Section,
@@ -9,23 +9,24 @@ import {
 	Input,
 	Button
 } from '../styles/AuthForm';
-import { useAuthDataContext } from '../contexts/auth';
+import { StoreContext } from './store';
 import axios from 'axios';
 import LogoSrc from '../styles/mediaAssets/jot-logo.ico';
 
 const LogIn = (props) => {
 	const [username, setUsername] = useState('');
 	const [password, setPassword] = useState('');
-	const [isLoggedIn, setIsLoggedIn] = useState(false);
-	const [isError, setIsError] = useState(false);
-	const { user, onLogIn } = useAuthDataContext();
 
-	if (user) {
+	const [state, dispatch] = useContext(StoreContext);
+
+	if (state.user) {
 		return <Redirect to='/home' />;
 	}
 
 	const logIn = async (e) => {
 		e.preventDefault();
+
+		dispatch({ type: 'LOGGINGIN' });
 
 		const config = {
 			headers: {
@@ -33,29 +34,24 @@ const LogIn = (props) => {
 			}
 		};
 
-		const response = await axios.post(
-			'http://localhost:3000/login',
-			{
-				username,
-				password
-			},
-			config
-		);
-		console.log(response);
+		try {
+			const response = await axios.post(
+				'http://localhost:3000/login',
+				{
+					username,
+					password
+				},
+				config
+			);
+			console.log(response);
 
-		if (response.status === 200) {
-			localStorage.username = response.data.user.username;
-			localStorage.password = response.data.user.password_digest;
-			localStorage.tokens = response.data.user.token;
-			localStorage.id = response.data.user.id;
-			onLogIn(response.data);
-			setIsLoggedIn(true);
-		} else {
-			setIsError(true);
+			dispatch({ type: 'SUCCESS', payload: response.data });
+		} catch (error) {
+			dispatch({ type: 'ERROR' });
 		}
 	};
 
-	if (isLoggedIn) {
+	if (state.isLoggedIn) {
 		return <Redirect to='/home' />;
 	}
 
@@ -90,7 +86,9 @@ const LogIn = (props) => {
 							placeholder='password'
 						/>
 					</Label>
-					<Button onClick={logIn}>Submit</Button>
+					<Button disabled={state.isLoading} onClick={logIn}>
+						{state.isLoading ? 'Logging in...' : 'Log In'}
+					</Button>
 				</Form>
 				<Link to='/signup'>Don't have an account?</Link>
 			</Card>

@@ -5,12 +5,12 @@ import SignUp from './components/SignUp';
 import LogIn from './components/LogIn';
 import Landing from './components/Landing';
 import Home from './components/Home';
-import AuthProvider from './contexts/auth';
+import Store from './components/store';
 import GlobalStyle from './styles/GlobalStyle';
 
 const App = (props) => {
 	return (
-		<AuthProvider>
+		<Store>
 			<Router>
 				<Switch>
 					<Route exact path='/' component={Landing} />
@@ -20,7 +20,7 @@ const App = (props) => {
 				</Switch>
 				<GlobalStyle />
 			</Router>
-		</AuthProvider>
+		</Store>
 	);
 };
 

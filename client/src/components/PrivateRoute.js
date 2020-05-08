@@ -1,10 +1,11 @@
 import React from 'react';
 import { Route, Link, Redirect } from 'react-router-dom';
-import { useAuthDataContext } from '../contexts/auth';
+import { StoreContext } from './store';
+import LogIn from './LogIn';
 
 export default function PrivateRoute({ component: Component, ...rest }) {
-	const { user } = useAuthDataContext();
-	// const finalComponent = user ? component : SignInPage;
+	const { user } = localStorage.data || StoreContext();
+
 	return (
 		<Route
 			{...rest}
