@@ -10,7 +10,7 @@ import {
 	Button
 } from '../styles/AuthForm';
 import { StoreContext } from './store';
-import axios from 'axios';
+import Axios from 'axios';
 import LogoSrc from '../styles/mediaAssets/jot-logo.ico';
 
 const LogIn = (props) => {
@@ -35,7 +35,7 @@ const LogIn = (props) => {
 		};
 
 		try {
-			const response = await axios.post(
+			const response = await Axios.post(
 				'http://localhost:3000/login',
 				{
 					username,

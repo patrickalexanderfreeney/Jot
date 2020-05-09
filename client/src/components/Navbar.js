@@ -1,16 +1,16 @@
-import React from 'react';
-import { Redirect } from 'react-router-dom';
+import React, { useContext } from 'react';
 import { Nav, LogoImg, Button } from '../styles/NavBar';
 import LogoSrc from '../styles/mediaAssets/jot-logo.ico';
 import { StoreContext } from './store';
 
 const NavBar = (props) => {
-	const { user, onLogout } = StoreContext();
+	const [dispatch] = useContext(StoreContext);
+
 	return (
 		<>
 			<Nav>
 				<LogoImg src={LogoSrc}></LogoImg>
-				<Button onClick={onLogout}>Log out</Button>
+				<Button onClick={() => dispatch({ type: 'LOGOUT' })}>Log out</Button>
 			</Nav>
 		</>
 	);
