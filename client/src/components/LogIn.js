@@ -1,5 +1,5 @@
-import React, { useState, useContext } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, Redirect, useHistory } from 'react-router-dom';
 import {
 	Section,
 	Card,
@@ -9,24 +9,26 @@ import {
 	Input,
 	Button
 } from '../styles/AuthForm';
-import { StoreContext } from './store';
 import Axios from 'axios';
 import LogoSrc from '../styles/mediaAssets/jot-logo.ico';
 
 const LogIn = (props) => {
 	const [username, setUsername] = useState('');
 	const [password, setPassword] = useState('');
+	const [isLoading, setIsLoading] = useState(false);
+	const [isError, setIsError] = useState(false);
+	const [isLoggedIn, setIsLoggedIn] = useState(false);
+	const history = useHistory();
 
-	const [state, dispatch] = useContext(StoreContext);
-
-	if (state.user) {
+	if (localStorage.user) {
 		return <Redirect to='/home' />;
 	}
 
 	const logIn = async (e) => {
 		e.preventDefault();
 
-		dispatch({ type: 'LOGGINGIN' });
+		setIsLoading(true);
+		setIsError(false);
 
 		const config = {
 			headers: {
@@ -45,13 +47,19 @@ const LogIn = (props) => {
 			);
 			console.log(response);
 
-			dispatch({ type: 'SUCCESS', payload: response.data });
+			setIsLoading(false);
+			setIsError(false);
+			setIsLoggedIn(true);
+
+			localStorage.setItem('user', JSON.stringify(response.data.user));
+			localStorage.setItem('token', JSON.stringify(response.data.token));
+			history.push('/home');
 		} catch (error) {
-			dispatch({ type: 'ERROR' });
+			setIsError(true);
 		}
 	};
 
-	if (state.isLoggedIn) {
+	if (isLoggedIn) {
 		return <Redirect to='/home' />;
 	}
 
@@ -86,8 +94,8 @@ const LogIn = (props) => {
 							placeholder='password'
 						/>
 					</Label>
-					<Button disabled={state.isLoading} onClick={logIn}>
-						{state.isLoading ? 'Logging in...' : 'Log In'}
+					<Button disabled={isLoading} onClick={logIn}>
+						{isLoading ? 'Logging in...' : 'Log In'}
 					</Button>
 				</Form>
 				<Link to='/signup'>Don't have an account?</Link>
