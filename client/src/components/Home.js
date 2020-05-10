@@ -1,5 +1,5 @@
 import React from 'react';
-import NavBar from './NavBar';
+import NavBar from './Navbar';
 import JotsContainer from './JotsContainer';
 import JotForm from './JotForm';
 import { MainSection, LeftPanel, RightPanel } from '../styles/Containers';

@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import { StoreContext } from './store';
 
 export default function PrivateRoute({ component: Component, ...rest }) {
-	const user = localStorage.user;
+	const user = useContext(StoreContext);
 
 	return (
 		<Route
