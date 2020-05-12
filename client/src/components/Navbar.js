@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { Nav, LogoImg, Button } from '../styles/NavBar';
 import LogoSrc from '../styles/mediaAssets/jot-logo.ico';

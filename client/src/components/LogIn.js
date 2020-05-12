@@ -17,7 +17,6 @@ const LogIn = (props) => {
 	const [password, setPassword] = useState('');
 	const [isLoading, setIsLoading] = useState(false);
 	const [isError, setIsError] = useState(false);
-	const [isLoggedIn, setIsLoggedIn] = useState(false);
 	const history = useHistory();
 
 	if (localStorage.user) {
@@ -49,7 +48,6 @@ const LogIn = (props) => {
 
 			setIsLoading(false);
 			setIsError(false);
-			setIsLoggedIn(true);
 
 			localStorage.setItem('user', JSON.stringify(response.data.user));
 			localStorage.setItem('token', JSON.stringify(response.data.token));
@@ -58,10 +56,6 @@ const LogIn = (props) => {
 			setIsError(true);
 		}
 	};
-
-	if (isLoggedIn) {
-		return <Redirect to='/home' />;
-	}
 
 	return (
 		<Section>

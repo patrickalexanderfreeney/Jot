@@ -3,9 +3,9 @@ import Axios from 'axios';
 import { Form, Input, TextArea, Button, Label } from '../styles/Containers';
 
 const JotForm = (props) => {
-	const { title, setTitle } = useState('');
-	const { body, setBody } = useState('');
-	const { tags, setTags } = useState('');
+	const [title, setTitle] = useState('');
+	const [body, setBody] = useState('');
+	const [tags, setTags] = useState('');
 
 	const createJot = async (e) => {
 		e.preventDefault();
@@ -37,7 +37,9 @@ const JotForm = (props) => {
 				<Label>
 					Title:
 					<Input
-						onChange={(e) => setTitle(e.target.value)}
+						onChange={(e) => {
+							setTitle(e.target.value);
+						}}
 						width='100%'
 						type='text'
 						value={title}
@@ -46,7 +48,9 @@ const JotForm = (props) => {
 				<Label>
 					Body:
 					<TextArea
-						onChange={(e) => setBody(e.target.value)}
+						onChange={(e) => {
+							setBody(e.target.value);
+						}}
 						rows='23'
 						cols='50'
 						type='textarea'
@@ -55,7 +59,9 @@ const JotForm = (props) => {
 				</Label>
 				<Label>
 					<Input
-						onChange={(e) => setTags(e.target.value)}
+						onChange={(e) => {
+							setTags(e.target.value);
+						}}
 						placeholder='add tags'
 						type='text'
 						value={tags}

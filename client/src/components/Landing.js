@@ -1,11 +1,11 @@
 import React from 'react';
+import { Section, Header } from '../styles/StyledLanding';
 
 const Landing = () => {
 	return (
-		<>
-			<h3>Welcome to Thoughts!</h3>
-			<p>A place to share your thoughts</p>
-		</>
+		<Section>
+			<Header>Jots: A place for your thoughts.</Header>
+		</Section>
 	);
 };
 

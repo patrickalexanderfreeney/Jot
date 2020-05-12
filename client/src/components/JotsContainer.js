@@ -15,16 +15,13 @@ const JotsContainer = (props) => {
 	const getJots = async () => {
 		const config = {
 			'Content-Type': 'application/json',
-			Authorization: localStorage.user.id
+			Authorization: `Bearer ${localStorage.token}`
 		};
 
-		const response = await Axios.get('http://localhost:3000/jots', config);
-		const data = await response.data;
-		setJots(data);
-
 		try {
-			const response = await Axios.get('jots');
+			const response = await Axios.get('http://localhost:3000/jots', config);
 			const data = await response.data;
+			console.log(data);
 			setJots(data);
 		} catch (error) {
 			console.error(error);
@@ -36,7 +33,12 @@ const JotsContainer = (props) => {
 			<SearchBar />
 			<JotList>
 				{jots.map((jot) => (
-					<Jot title={jot.title} body={jot.body} tags={jot.tags} />
+					<Jot
+						title={jot.title}
+						body={jot.body}
+						tags={jot.tags}
+						key={jot.title}
+					/>
 				))}
 			</JotList>
 		</>

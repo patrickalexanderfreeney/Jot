@@ -1,5 +1,5 @@
 class JotsController < ApplicationController
-    # skip_before_action :check_authentication
+    skip_before_action :check_authentication
     
     def index
         @jots = Jot.all
