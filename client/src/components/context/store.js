@@ -1,6 +1,6 @@
 import React, { createContext, useReducer } from 'react';
 
-export const StoreContext = createContext({});
+export const PostsContext = createContext({});
 
 const initialState = {
 	isLoading: false,
@@ -51,7 +51,7 @@ function reducer(state, action) {
 	}
 }
 
-const Store = ({ children }) => {
+const PostsStore = ({ children }) => {
 	const [state, dispatch] = useReducer(reducer, initialState);
 
 	return (

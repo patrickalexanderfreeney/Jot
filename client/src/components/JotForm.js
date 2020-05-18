@@ -1,18 +1,20 @@
 import React, { useState } from 'react';
 import Axios from 'axios';
+import { useHistory } from 'react-router-dom';
 import { Form, Input, TextArea, Button, Label } from '../styles/Containers';
 
 const JotForm = (props) => {
 	const [title, setTitle] = useState('');
 	const [body, setBody] = useState('');
 	const [tags, setTags] = useState('');
+	const history = useHistory();
 
 	const createJot = async (e) => {
 		e.preventDefault();
 
 		const config = {
 			'Content-Type': 'application/json',
-			Authorization: localStorage.user.id
+			Authorization: localStorage.id
 		};
 
 		try {
@@ -21,7 +23,8 @@ const JotForm = (props) => {
 				{
 					title,
 					body,
-					tags
+					tags,
+					user_id: localStorage.id
 				},
 				config
 			);

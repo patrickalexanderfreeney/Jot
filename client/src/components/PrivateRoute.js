@@ -2,13 +2,13 @@ import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 
 export default function PrivateRoute({ component: Component, ...rest }) {
-	const user = localStorage.user;
+	const token = localStorage.token;
 
 	return (
 		<Route
 			{...rest}
 			render={(props) =>
-				user ? (
+				token ? (
 					<Component {...props} />
 				) : (
 					<Redirect

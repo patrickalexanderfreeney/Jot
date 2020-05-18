@@ -5,7 +5,6 @@ import SearchBar from './SearchBar';
 import { JotList } from '../styles/Containers';
 
 const JotsContainer = (props) => {
-	// const [searchTerm, setSearchTerm] = useState[''];
 	const [jots, setJots] = useState([]);
 
 	useEffect(() => {
@@ -22,7 +21,9 @@ const JotsContainer = (props) => {
 			const response = await Axios.get('http://localhost:3000/jots', config);
 			const data = await response.data;
 			console.log(data);
-			setJots(data);
+			const userJots = data.filter((jot) => jot.user_id == localStorage.id);
+			console.log(userJots);
+			setJots(userJots);
 		} catch (error) {
 			console.error(error);
 		}

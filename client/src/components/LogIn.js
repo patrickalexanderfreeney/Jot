@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, Redirect, useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import {
 	Section,
 	Card,
@@ -19,9 +19,9 @@ const LogIn = (props) => {
 	const [isError, setIsError] = useState(false);
 	const history = useHistory();
 
-	if (localStorage.user) {
-		return <Redirect to='/home' />;
-	}
+	// if (localStorage.token) {
+	// 	return history.push('/home');
+	// }
 
 	const logIn = async (e) => {
 		e.preventDefault();
@@ -46,13 +46,22 @@ const LogIn = (props) => {
 			);
 			console.log(response);
 
-			setIsLoading(false);
-			setIsError(false);
-
-			localStorage.setItem('user', JSON.stringify(response.data.user));
-			localStorage.setItem('token', JSON.stringify(response.data.token));
-			history.push('/home');
+			if (response.data.status === 200) {
+				localStorage.setItem(
+					'username',
+					JSON.stringify(response.data.username)
+				);
+				localStorage.setItem('token', response.data.token);
+				localStorage.setItem('id', response.data.id);
+				setIsLoading(false);
+				setIsError(false);
+				console.log(isError);
+				history.push('/home');
+			} else {
+				setIsLoading(false);
+			}
 		} catch (error) {
+			setIsLoading(false);
 			setIsError(true);
 		}
 	};
