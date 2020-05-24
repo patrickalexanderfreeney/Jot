@@ -1,6 +1,6 @@
 import React from 'react';
 import { useHistory, Link } from 'react-router-dom';
-import { Nav, LogoImg, Button } from '../styles/NavBar';
+import { Nav, LogoImg, Wrapper, Button } from '../styles/NavBar';
 import LogoSrc from '../styles/mediaAssets/jot-logo.ico';
 
 const NavBar = (props) => {
@@ -9,29 +9,45 @@ const NavBar = (props) => {
 
 	const logOut = () => {
 		localStorage.clear();
-		history.push('/login');
+		history.push('/');
 	};
 
 	return token ? (
 		<>
 			<Nav>
 				<LogoImg src={LogoSrc}></LogoImg>
-				<Button
-					onClick={() => {
-						logOut();
-					}}
-				>
-					Log out
-				</Button>
+				<Wrapper>
+					<Button
+						onClick={() => {
+							logOut();
+						}}
+					>
+						Log out
+					</Button>
+				</Wrapper>
 			</Nav>
 		</>
 	) : (
 		<Nav>
-			<LogoImg src={LogoSrc}></LogoImg>
-			<Button>Log In</Button>
-			<Button>
-				<Link to='/signup'>Don't have an account?</Link>
-			</Button>
+			<Link to='/'>
+				<LogoImg src={LogoSrc}></LogoImg>
+			</Link>
+			<Wrapper>
+				<Button
+					onClick={() => {
+						history.push('/login');
+					}}
+				>
+					Log In
+				</Button>
+				<Button
+					onClick={() => {
+						history.push('/signup');
+					}}
+				>
+					Sign Up
+				</Button>
+			</Wrapper>
 		</Nav>
 	);
 };

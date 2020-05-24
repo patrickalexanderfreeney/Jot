@@ -28,13 +28,18 @@ const LogoImg = styled.img`
 	position: absolute;
 	left: 0;
 `;
-
+const Wrapper = styled.div`
+	display: flex;
+	margin-left: auto;
+	justify-content: space-around;
+`;
 const Button = styled.button`
-	width: 300px;
-	height: 35px;
+	width: 6rem;
+	height: 2.5rem;
 	font-size: 100%;
 	align-self: center;
-	margin-top: 0.5rem;
+	/* margin-top: 1rem; */
+	margin: 1rem;
 	background-image: linear-gradient(to right, #00c6fb 0%, #005bea 100%);
 	color: #fff;
 	border-radius: 5px;
@@ -43,4 +48,4 @@ const Button = styled.button`
 		transform: scale(1.02);
 	}
 `;
-export { Nav, Logo, LogoImg, Button };
+export { Nav, Logo, LogoImg, Wrapper, Button };

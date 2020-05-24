@@ -1,13 +1,14 @@
 import React from 'react';
+import NavBar from '../components/Navbar';
 import { Section, Header, Title, Button } from '../styles/StyledLanding';
 
 const Landing = () => {
 	return (
 		<Section>
+			<NavBar />
 			<Header>
 				<Title>Welcome To Jot..</Title>
 				<Title>A place for your thoughts.</Title>
-				<Button>Log In to get Started</Button>
 			</Header>
 		</Section>
 	);

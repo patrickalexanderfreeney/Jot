@@ -102,6 +102,7 @@ const LogIn = (props) => {
 					</Button>
 				</Form>
 				<Link to='/signup'>Don't have an account?</Link>
+				<Link to='/'>Go back</Link>
 			</Card>
 		</Section>
 	);

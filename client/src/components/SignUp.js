@@ -88,6 +88,8 @@
 // 					</Button>
 // 				</Form>
 // 				<Link to='/login'>Already have an account?</Link>
+// <Link to='/'>Go back</Link>
+
 // 			</Card>
 // 		</Section>
 // 	);

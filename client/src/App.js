@@ -12,8 +12,6 @@ import GlobalStyle from './styles/GlobalStyle';
 const App = (props) => {
 	return (
 		<Router>
-			<NavBar />
-
 			<Switch>
 				<Route exact path='/' component={Landing} />
 				<Route exact path='/login' component={LogIn} />
