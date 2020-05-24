@@ -1,17 +1,18 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 import { Nav, LogoImg, Button } from '../styles/NavBar';
 import LogoSrc from '../styles/mediaAssets/jot-logo.ico';
 
 const NavBar = (props) => {
 	const history = useHistory();
+	const token = localStorage.token;
 
 	const logOut = () => {
 		localStorage.clear();
 		history.push('/login');
 	};
 
-	return (
+	return token ? (
 		<>
 			<Nav>
 				<LogoImg src={LogoSrc}></LogoImg>
@@ -24,6 +25,14 @@ const NavBar = (props) => {
 				</Button>
 			</Nav>
 		</>
+	) : (
+		<Nav>
+			<LogoImg src={LogoSrc}></LogoImg>
+			<Button>Log In</Button>
+			<Button>
+				<Link to='/signup'>Don't have an account?</Link>
+			</Button>
+		</Nav>
 	);
 };
 

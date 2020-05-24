@@ -5,12 +5,15 @@ import SignUp from './components/SignUp';
 import LogIn from './components/LogIn';
 import Landing from './components/Landing';
 import Home from './components/Home';
-// import Store from './components/store';
+import NavBar from './components/Navbar';
+
 import GlobalStyle from './styles/GlobalStyle';
 
 const App = (props) => {
 	return (
 		<Router>
+			<NavBar />
+
 			<Switch>
 				<Route exact path='/' component={Landing} />
 				<Route exact path='/login' component={LogIn} />
