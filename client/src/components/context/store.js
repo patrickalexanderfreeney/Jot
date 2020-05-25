@@ -1,49 +1,40 @@
-import React, { createContext, useReducer } from 'react';
+import React, { createContext, useReducer, useEffect } from 'react';
 
 export const PostsContext = createContext({});
 
 const initialState = {
-	isLoading: false,
-	isError: false,
-	isLoggedIn: false,
-	user: null,
-	token: null
+	jots,
+	editPost: {},
+	readPost: {}
 };
 
 function reducer(state, action) {
 	switch (action.type) {
-		case 'LOGGINGIN':
+		case 'SHOWPOST':
 			return {
 				...state,
 				isLoading: true,
 				isError: false
 			};
 
-		case 'ERROR':
+		case 'EDITPOST':
 			return {
 				...state,
 				isLoading: false,
 				isError: true
 			};
 
-		case 'SUCCESS':
-			localStorage.setItem('user', JSON.stringify(action.payload.user));
-			localStorage.setItem('token', JSON.stringify(action.payload.token));
+		case 'DELETEPOST':
 			return {
 				...state,
-				isLoggedIn: true,
-				isError: false,
-				user: action.payload.user,
-				token: action.payload.token
+				isLoading: false,
+				isError: true
 			};
-
-		case 'LOGOUT':
-			localStorage.clear();
+		case 'FILTERPOSTS':
 			return {
 				...state,
-				isLoggedIn: false,
-				user: null,
-				token: null
+				isLoading: false,
+				isError: true
 			};
 
 		default:

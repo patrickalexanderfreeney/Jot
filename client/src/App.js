@@ -5,8 +5,6 @@ import SignUp from './components/SignUp';
 import LogIn from './components/LogIn';
 import Landing from './components/Landing';
 import Home from './components/Home';
-import NavBar from './components/Navbar';
-
 import GlobalStyle from './styles/GlobalStyle';
 
 const App = (props) => {

@@ -5,9 +5,9 @@ class AuthController < ApplicationController
       user = User.find_by(username: params[:username])
   
       if user && user.authenticate(params[:password])
-        render json: {user: user, token: encode_token({user_id: user.id})}
+        render json: {status: 200, username: user.username, id: user.id, token: encode_token({user_id: user.id})}
       else 
-        render json: {error: "Invalid username or password"}
+        render json: {status:"not valid", error: "Invalid username or password"}
       end
    end
   end

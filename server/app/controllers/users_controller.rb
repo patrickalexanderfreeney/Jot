@@ -3,7 +3,8 @@ class UsersController < ApplicationController
 
     def show
         user = User.find_by(id: params[:id])
-        render json: user, except: [:created_at, :updated_at]
+        render json: {status:200, user, except: [:created_at, :updated_at]}
+
     end
 
     def create
