@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
+import { PostContext } from './context/store';
 import Axios from 'axios';
 import Jot from './Jot';
 import SearchBar from './SearchBar';
 import { JotList } from '../styles/Containers';
 
 const JotsContainer = (props) => {
+	const [state, dispatch] = useContext(PostContext);
 	const [jots, setJots] = useState([]);
 
 	useEffect(() => {
@@ -35,10 +37,12 @@ const JotsContainer = (props) => {
 			<JotList>
 				{jots.map((jot) => (
 					<Jot
+						key={jot.id}
+						clickable
 						title={jot.title}
 						body={jot.body}
 						tags={jot.tags}
-						key={jot.title}
+						jotId={jot.id}
 					/>
 				))}
 			</JotList>

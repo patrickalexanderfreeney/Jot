@@ -1,11 +1,11 @@
-import React, { createContext, useReducer, useEffect } from 'react';
+import React, { createContext, useReducer } from 'react';
 
-export const PostsContext = createContext({});
+export const PostContext = createContext({});
 
 const initialState = {
-	jots,
-	editPost: {},
-	readPost: {}
+	jots: {},
+	editJot: {},
+	showJot: {}
 };
 
 function reducer(state, action) {
@@ -42,14 +42,14 @@ function reducer(state, action) {
 	}
 }
 
-const PostsStore = ({ children }) => {
+const PostStore = ({ children }) => {
 	const [state, dispatch] = useReducer(reducer, initialState);
 
 	return (
-		<StoreContext.Provider value={[state, dispatch]}>
+		<PostContext.Provider value={[state, dispatch]}>
 			{children}
-		</StoreContext.Provider>
+		</PostContext.Provider>
 	);
 };
 
-export default Store;
+export default PostStore;
