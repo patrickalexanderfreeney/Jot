@@ -1,16 +1,9 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { Card, CardContainer } from '../styles/Containers';
+import React, { useContext } from 'react';
+import { PostContext } from './context/store';
 
-const Jot = ({ title, body, tags, jotId }) => {
-	return (
-		<Card>
-			<CardContainer>
-				<h4>{title}</h4>
-				<p>{tags}</p>
-			</CardContainer>
-		</Card>
-	);
-};
+function Jot() {
+	const [state, dispatch] = useContext(PostContext);
+	return <div>{state.showJot.Title}</div>;
+}
 
 export default Jot;

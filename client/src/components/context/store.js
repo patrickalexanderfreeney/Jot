@@ -3,34 +3,47 @@ import React, { createContext, useReducer } from 'react';
 export const PostContext = createContext({});
 
 const initialState = {
-	jots: {},
-	editJot: {},
-	showJot: {}
+	jots: []
+	// editJot: [],
+	// displayJots: [],
+	// showJot: []
 };
 
 function reducer(state, action) {
 	switch (action.type) {
-		case 'SHOWPOST':
+		case 'SETJOTS':
+			return {
+				...state,
+				jots: action.payload,
+				isLoading: true
+			};
+		case 'ADDJOT':
+			return {
+				...state,
+				jots: [action.payload, ...state.jots],
+				isLoading: false,
+				isError: true
+			};
+
+		case 'SHOWJOT':
 			return {
 				...state,
 				isLoading: true,
 				isError: false
 			};
 
-		case 'EDITPOST':
+		case 'EDITJOT':
 			return {
 				...state,
 				isLoading: false,
 				isError: true
 			};
 
-		case 'DELETEPOST':
+		case 'DELETEJOT':
 			return {
-				...state,
-				isLoading: false,
-				isError: true
+				...state
 			};
-		case 'FILTERPOSTS':
+		case 'FILTERJOT':
 			return {
 				...state,
 				isLoading: false,
