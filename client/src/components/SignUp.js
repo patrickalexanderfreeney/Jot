@@ -30,6 +30,7 @@ const SignUp = () => {
 		};
 
 		try {
+			console.log(username);
 			const response = await Axios.post(
 				'http://localhost:3000/users',
 				{
@@ -40,6 +41,7 @@ const SignUp = () => {
 			);
 			console.log(response);
 			setIsLoading(false);
+			setSignedup(true);
 		} catch (error) {}
 	};
 	if (signedup) {
