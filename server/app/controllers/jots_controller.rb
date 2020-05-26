@@ -27,13 +27,13 @@ class JotsController < ApplicationController
 
     def update
         jot = Jot.find(params[:id])
-        Jot.update(jot_params)
+        jot.update(jot_params)
         render json: jot, except: [:created_at, :updated_at]
     end
 
     def destroy
-        jot = Jot.find(params[:id])
-        Jot.destroy
+        jot = Jot.find_by(id: params[:id])
+        jot.destroy
     end
 
     private

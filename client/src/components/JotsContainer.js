@@ -10,7 +10,7 @@ const JotsContainer = (props) => {
 
 	useEffect(() => {
 		getJots();
-	}, [state.jots]);
+	}, []);
 
 	const getJots = async () => {
 		const config = {
@@ -21,29 +21,26 @@ const JotsContainer = (props) => {
 		try {
 			const response = await Axios.get('http://localhost:3000/jots', config);
 			const data = await response.data;
-			console.log(data);
 			const userJots = data.filter((jot) => jot.user_id == localStorage.id);
-			console.log(userJots);
 			dispatch({ type: 'SETJOTS', payload: userJots });
-			console.log(state.jots);
 		} catch (error) {
 			console.error(error);
 		}
 	};
-	const deleteJot = async () => {
+	const deleteJot = async (jotId) => {
+		console.log(jotId);
 		const config = {
 			'Content-Type': 'application/json',
 			Authorization: `Bearer ${localStorage.token}`
 		};
 
 		try {
-			const response = await Axios.delete('http://localhost:3000/jots', config);
-			const data = await response.data;
-			console.log(data);
-			const userJots = data.filter((jot) => jot.user_id == localStorage.id);
-			console.log(userJots);
-			dispatch({ type: 'SETJOTS', payload: userJots });
-			console.log(state.jots);
+			const response = await Axios.delete(
+				`http://localhost:3000/jots/${jotId}`,
+				config
+			);
+
+			dispatch({ type: 'DELETEJOT', jotId });
 		} catch (error) {
 			console.error(error);
 		}
@@ -61,6 +58,7 @@ const JotsContainer = (props) => {
 						body={jot.body}
 						tags={jot.tags}
 						jotId={jot.id}
+						deleteJot={deleteJot}
 					/>
 				))}
 			</JotList>

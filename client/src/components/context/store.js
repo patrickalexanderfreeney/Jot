@@ -41,7 +41,8 @@ function reducer(state, action) {
 
 		case 'DELETEJOT':
 			return {
-				...state
+				...state,
+				jots: state.jots.filter((jot) => jot.id !== action.jotId)
 			};
 		case 'FILTERJOT':
 			return {
