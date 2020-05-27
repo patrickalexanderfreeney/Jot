@@ -4,7 +4,6 @@ import PostStore from './context/store';
 import NavBar from './Navbar';
 import JotsContainer from './JotsContainer';
 import JotForm from './JotForm';
-import JotShow from './JotShowContainer';
 import { MainSection, LeftPanel, RightPanel } from '../styles/Containers';
 
 const Home = (props) => {
@@ -17,7 +16,6 @@ const Home = (props) => {
 						<JotsContainer />
 					</LeftPanel>
 					<RightPanel>
-						{/* <JotShow /> */}
 						<JotForm />
 					</RightPanel>
 				</MainSection>

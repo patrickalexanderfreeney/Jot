@@ -3,40 +3,38 @@ import React, { createContext, useReducer } from 'react';
 export const PostContext = createContext({});
 
 const initialState = {
-	jots: []
-	// editJot: [],
-	// displayJots: [],
-	// showJot: []
+	jots: [],
+	filteredJots: [],
+	searchTerm: false
 };
 
 function reducer(state, action) {
 	switch (action.type) {
 		case 'SETJOTS':
 			return {
-				...state,
-				jots: action.payload,
-				isLoading: true
+				...state
 			};
 		case 'ADDJOT':
 			return {
 				...state,
-				jots: [action.payload, ...state.jots],
-				isLoading: false,
-				isError: true
+				jots: [action.payload, ...state.jots]
+			};
+		case 'RESETJOTS':
+			return {
+				...state,
+				jots: [state.jots],
+				filteredJots: [],
+				searchTerm: false
 			};
 
 		case 'SHOWJOT':
 			return {
-				...state,
-				isLoading: true,
-				isError: false
+				...state
 			};
 
 		case 'EDITJOT':
 			return {
-				...state,
-				isLoading: false,
-				isError: true
+				...state
 			};
 
 		case 'DELETEJOT':
@@ -44,11 +42,14 @@ function reducer(state, action) {
 				...state,
 				jots: state.jots.filter((jot) => jot.id !== action.jotId)
 			};
-		case 'FILTERJOT':
+		case 'FILTERJOTS':
 			return {
 				...state,
-				isLoading: false,
-				isError: true
+				jots: state.jots.filter((jot) => {
+					jot.title.toLowerCase().includes(action.searchTerm.toLowerCase()) ||
+						jot.tags.toLowerCase().includes(action.searchTerm.toLowerCase());
+				}),
+				searchTerm: true
 			};
 
 		default:

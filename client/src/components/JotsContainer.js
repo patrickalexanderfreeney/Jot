@@ -45,12 +45,28 @@ const JotsContainer = (props) => {
 			console.error(error);
 		}
 	};
+	const filterJot = async (searchTerm) => {
+		console.log(searchTerm);
 
+		dispatch({ type: 'FILTERJOTS', searchTerm });
+	};
+	const resetJots = async () => {
+		dispatch({ type: 'RESETJOTS' });
+	};
+
+	let jots;
+	// = state.searchTerm ? state.filteredJots : state.jots;
+	if (state.searchTerm == 'true') {
+		jots = state.filteredJots;
+	} else {
+		jots = state.jots;
+	}
+	console.log(jots);
 	return (
 		<>
-			<SearchBar />
+			<SearchBar resetJots={resetJots} filterJot={filterJot} />
 			<JotList>
-				{state.jots.map((jot) => (
+				{jots.map((jot) => (
 					<JotCard
 						key={jot.id}
 						clickable

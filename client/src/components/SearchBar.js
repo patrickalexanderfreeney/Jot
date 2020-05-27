@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { SearchDiv, Input } from '../styles/Containers';
+import { SearchDiv, Input, Button } from '../styles/Containers';
 
-const SearchBar = () => {
+const SearchBar = ({ filterJot, resetJots }) => {
 	const [searchTerm, setSearchTerm] = useState();
 
 	return (
@@ -15,10 +15,12 @@ const SearchBar = () => {
 						placeholder='Search...'
 						onChange={(e) => {
 							setSearchTerm(e.target.value);
+							filterJot(searchTerm);
 						}}
 					/>
 				</label>
 			</form>
+			<Button onClick={resetJots}>Clear</Button>
 		</SearchDiv>
 	);
 };
