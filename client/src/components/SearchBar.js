@@ -23,7 +23,7 @@ const SearchBar = ({ filterJot, resetJots }) => {
 					/>
 				</label>
 			</form>
-			<Button>Clear</Button>
+			<Button onClick={resetJots}>Clear</Button>
 		</SearchDiv>
 	);
 };

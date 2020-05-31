@@ -51,7 +51,7 @@ const JotsContainer = (props) => {
 		dispatch({ type: 'FILTERJOTS', payload: searchTerm });
 	};
 	const resetJots = async () => {
-		dispatch({ type: 'RESETJOTS' });
+		getJots();
 	};
 
 	console.log(state.jots);
