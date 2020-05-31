@@ -30,6 +30,7 @@ export const JotList = styled.div`
 	margin-top: 20%;
 `;
 export const SearchDiv = styled.div`
+	display: flex;
 	padding: 20px 10px;
 	width: 100%;
 	background: white;

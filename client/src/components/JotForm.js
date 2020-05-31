@@ -1,14 +1,12 @@
 import React, { useState, useContext } from 'react';
 import { PostContext } from './context/store';
 import Axios from 'axios';
-import { useHistory } from 'react-router-dom';
 import { Form, Input, TextArea, Button, Label } from '../styles/Containers';
 
 const JotForm = () => {
 	const [title, setTitle] = useState('');
 	const [body, setBody] = useState('');
 	const [tags, setTags] = useState('');
-	const history = useHistory();
 
 	const [state, dispatch] = useContext(PostContext);
 

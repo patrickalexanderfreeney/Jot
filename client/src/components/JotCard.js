@@ -1,5 +1,4 @@
-import React, { useContext } from 'react';
-// import { PostContext } from './context/store';
+import React from 'react';
 import { Card, CardContainer, Button } from '../styles/styledJotCard';
 
 const JotCard = ({ title, tags, jotId, deleteJot }) => {

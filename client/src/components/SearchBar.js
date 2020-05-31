@@ -2,11 +2,15 @@ import React, { useState } from 'react';
 import { SearchDiv, Input, Button } from '../styles/Containers';
 
 const SearchBar = ({ filterJot, resetJots }) => {
-	const [searchTerm, setSearchTerm] = useState();
+	const [searchTerm, setSearchTerm] = useState('');
+	const handleSearch = (e) => {
+		e.preventDefault();
+		filterJot(searchTerm);
+	};
 
 	return (
 		<SearchDiv>
-			<form>
+			<form onSubmit={handleSearch}>
 				<label>
 					<Input
 						width='100%'
@@ -15,12 +19,11 @@ const SearchBar = ({ filterJot, resetJots }) => {
 						placeholder='Search...'
 						onChange={(e) => {
 							setSearchTerm(e.target.value);
-							filterJot(searchTerm);
 						}}
 					/>
 				</label>
 			</form>
-			<Button onClick={resetJots}>Clear</Button>
+			<Button>Clear</Button>
 		</SearchDiv>
 	);
 };
