@@ -8,6 +8,11 @@ const SearchBar = ({ filterJot, resetJots }) => {
 		filterJot(searchTerm);
 	};
 
+	const handleReset = () => {
+		resetJots();
+		setSearchTerm('');
+	};
+
 	return (
 		<SearchDiv>
 			<form onSubmit={handleSearch}>
@@ -23,7 +28,7 @@ const SearchBar = ({ filterJot, resetJots }) => {
 					/>
 				</label>
 			</form>
-			<Button onClick={resetJots}>Clear</Button>
+			<Button onClick={handleReset}>Clear</Button>
 		</SearchDiv>
 	);
 };
