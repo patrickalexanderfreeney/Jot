@@ -43,7 +43,10 @@ function reducer(state, action) {
 			return {
 				...state,
 				jots: state.jots.filter((jot) => {
-					return jot.tags.toLowerCase().includes(action.payload.toLowerCase());
+					return (
+						jot.tags.toLowerCase().includes(action.payload.toLowerCase()) ||
+						jot.title.toLowerCase().includes(action.payload.toLowerCase())
+					);
 				})
 			};
 
