@@ -1,12 +1,12 @@
-// import React from 'react';
-// import ReadJot from './ReadJot';
+import React, { useContext } from 'react';
+import { PostContext } from './context/store';
+import JotForm from './JotForm';
+import Jot from './Jot';
 
-// function JotShowContainer() {
-// 	return state.showPost ? (
-// 		<ReadJot />
-// 	) : (
-// 		<Redirect to={{ pathname: '/login', state: { referer: props.location } }} />
-// 	);
-// }
+function JotShowContainer() {
+	const [state, dispatch] = useContext(PostContext);
 
-// export default JotShowContainer;
+	return state.currentJot ? <Jot jot={state.currentJot} /> : <JotForm />;
+}
+
+export default JotShowContainer;

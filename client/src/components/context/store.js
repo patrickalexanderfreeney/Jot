@@ -3,7 +3,8 @@ import React, { createContext, useReducer } from 'react';
 export const PostContext = createContext({});
 
 const initialState = {
-	jots: []
+	jots: [],
+	currentJot: null
 };
 
 function reducer(state, action) {
@@ -24,9 +25,10 @@ function reducer(state, action) {
 				jots: action.payload
 			};
 
-		case 'SHOWJOT':
+		case 'READJOT':
 			return {
-				...state
+				...state,
+				currentJot: action.payload
 			};
 
 		case 'EDITJOT':

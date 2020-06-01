@@ -27,6 +27,24 @@ const JotsContainer = (props) => {
 			console.error(error);
 		}
 	};
+	const editJot = async (jot) => {
+		const config = {
+			'Content-Type': 'application/json',
+			Authorization: `Bearer ${localStorage.token}`
+		};
+
+		try {
+			const response = await Axios.patch(
+				`http://localhost:3000/jots/${jot.id}`,
+				config
+			);
+			const data = await response.data;
+			const userJots = data.filter((jot) => jot.user_id == localStorage.id);
+			dispatch({ type: 'SETJOTS', payload: userJots });
+		} catch (error) {
+			console.error(error);
+		}
+	};
 	const deleteJot = async (jotId) => {
 		console.log(jotId);
 		const config = {
@@ -44,6 +62,11 @@ const JotsContainer = (props) => {
 		} catch (error) {
 			console.error(error);
 		}
+	};
+	const readJot = async (jot) => {
+		console.log(jot);
+
+		dispatch({ type: 'READJOT', payload: jot });
 	};
 	const filterJot = async (searchTerm) => {
 		console.log(searchTerm);
@@ -63,11 +86,9 @@ const JotsContainer = (props) => {
 					<JotCard
 						key={jot.id}
 						clickable
-						title={jot.title}
-						body={jot.body}
-						tags={jot.tags}
-						jotId={jot.id}
+						jot={jot}
 						deleteJot={deleteJot}
+						readJot={readJot}
 					/>
 				))}
 			</JotList>

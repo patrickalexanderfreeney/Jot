@@ -1,16 +1,16 @@
 import React from 'react';
 import { Card, CardContainer, Button } from '../styles/styledJotCard';
 
-const JotCard = ({ title, tags, jotId, deleteJot }) => {
+const JotCard = ({ jot, readJot, deleteJot }) => {
 	return (
 		<Card>
 			<CardContainer>
-				<h4>{title}</h4>
-				<p>{tags}</p>
+				<h4>{jot.title}</h4>
+				<p>{jot.tags}</p>
 				<div>
-					<Button onClick={() => deleteJot(jotId)}>Delete</Button>
+					<Button onClick={() => deleteJot(jot.id)}>Delete</Button>
 					<Button>Edit</Button>
-					<Button>Read</Button>
+					<Button onClick={() => readJot(jot)}>Read</Button>
 				</div>
 			</CardContainer>
 		</Card>

@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
 import { PostContext } from './context/store';
 
-function Jot() {
+function Jot({ jot }) {
 	const [state, dispatch] = useContext(PostContext);
-	return <div>{state.jots.Title}</div>;
+	return <div>{state.currentJot.title}</div>;
 }
 
 export default Jot;

@@ -1,6 +1,6 @@
 import React from 'react';
 import PostStore from './context/store';
-
+import JotShowContainer from './JotShowContainer';
 import NavBar from './Navbar';
 import JotsContainer from './JotsContainer';
 import JotForm from './JotForm';
@@ -16,7 +16,7 @@ const Home = (props) => {
 						<JotsContainer />
 					</LeftPanel>
 					<RightPanel>
-						<JotForm />
+						<JotShowContainer />
 					</RightPanel>
 				</MainSection>
 			</PostStore>
