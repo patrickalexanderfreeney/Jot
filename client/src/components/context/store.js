@@ -31,11 +31,6 @@ function reducer(state, action) {
 				currentJot: action.payload
 			};
 
-		case 'EDITJOT':
-			return {
-				...state
-			};
-
 		case 'DELETEJOT':
 			return {
 				...state,
