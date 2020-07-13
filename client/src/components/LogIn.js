@@ -19,10 +19,6 @@ const LogIn = (props) => {
 	const [isError, setIsError] = useState(false);
 	const history = useHistory();
 
-	// if (localStorage.token) {
-	// 	return history.push('/home');
-	// }
-
 	const logIn = async (e) => {
 		e.preventDefault();
 

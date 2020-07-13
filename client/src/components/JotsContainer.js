@@ -1,9 +1,11 @@
 import React, { useEffect, useContext } from 'react';
+import { connect } from 'react-redux';
 import { PostContext } from './context/store';
 import Axios from 'axios';
 import JotCard from './JotCard';
 import SearchBar from './SearchBar';
 import { JotList } from '../styles/Containers';
+import { connect } from 'react-redux';
 
 const JotsContainer = (props) => {
 	const [state, dispatch] = useContext(PostContext);
@@ -96,4 +98,10 @@ const JotsContainer = (props) => {
 	);
 };
 
-export default JotsContainer;
+const mapStateToProps = (state) => {
+	return {
+		jots: state.jots
+	};
+};
+
+export default connect(mapStateToProps)(JotsContainer);
