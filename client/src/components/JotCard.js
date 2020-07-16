@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, CardContainer, Button } from '../styles/styledJotCard';
 
-const JotCard = ({ jot, readJot, deleteJot }) => {
+const JotCard = ({ jot, readJot, deleteJot, selectJot }) => {
 	return (
 		<Card>
 			<CardContainer>
@@ -10,7 +10,7 @@ const JotCard = ({ jot, readJot, deleteJot }) => {
 				<div>
 					<Button onClick={() => deleteJot(jot.id)}>Delete</Button>
 					<Button>Edit</Button>
-					<Button onClick={() => readJot(jot)}>Read</Button>
+					<Button onClick={() => selectJot(jot)}>Read</Button>
 				</div>
 			</CardContainer>
 		</Card>

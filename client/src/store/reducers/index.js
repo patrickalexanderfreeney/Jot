@@ -9,7 +9,7 @@ const selectedJot = (selectedJot = null, action) => {
 		return action.payload;
 	}
 
-	return seelectedJot;
+	return selectedJot;
 };
 
 export default combineReducers({

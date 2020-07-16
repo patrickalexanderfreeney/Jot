@@ -1,6 +1,6 @@
 export const selectJot = (jot) => {
 	return {
-		type: 'SELECT_JOT',
+		type: 'SELECTED_JOT',
 		payload: jot
 	};
 };
