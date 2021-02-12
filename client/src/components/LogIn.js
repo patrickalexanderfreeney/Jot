@@ -12,7 +12,7 @@ import {
 import Axios from 'axios';
 import LogoSrc from '../styles/mediaAssets/jot-logo.ico';
 
-const LogIn = (props) => {
+export default function LogIn(props){
 	const [username, setUsername] = useState('');
 	const [password, setPassword] = useState('');
 	const [isLoading, setIsLoading] = useState(false);
@@ -103,4 +103,3 @@ const LogIn = (props) => {
 		</Section>
 	);
 };
-export default LogIn;
