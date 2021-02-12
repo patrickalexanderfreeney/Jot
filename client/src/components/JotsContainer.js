@@ -1,13 +1,12 @@
 import React, { useEffect, useContext } from 'react';
 import { connect } from 'react-redux';
-import { selectJot } from '../store/actions';
 import { PostContext } from './context/store';
 import Axios from 'axios';
 import JotCard from './JotCard';
 import SearchBar from './SearchBar';
 import { JotList } from '../styles/Containers';
 
-const JotsContainer = (props) => {
+export default function JotsContainer(props){
 	const [state, dispatch] = useContext(PostContext);
 
 	useEffect(() => {
@@ -99,12 +98,3 @@ const JotsContainer = (props) => {
 	);
 };
 
-const mapStateToProps = (state) => {
-	return {
-		jots: state.jots
-	};
-};
-
-export default connect(mapStateToProps, {
-	selectJot
-})(JotsContainer);
