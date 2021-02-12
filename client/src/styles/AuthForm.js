@@ -47,17 +47,7 @@ const Input = styled.input`
 	border-radius: 5px;
 `;
 
-// const Button = styled.button`
-// 	background: linear-gradient(to bottom, #6371c7, #5563c1);
-// 	border-color: #3f4eae;
-// 	border-radius: 3px;
-// 	padding: 1rem;
-// 	color: white;
-// 	font-weight: 700;
-// 	width: 100%;
-// 	margin-bottom: 1rem;
-// 	font-size: 0.8rem;
-// `;
+
 
 const Button = styled.button`
 	width: 100%;
@@ -66,13 +56,14 @@ const Button = styled.button`
 	margin-top: 0.5rem;
 	margin-bottom: 0.5rem;
 	padding: 0.9rem;
-	background-image: linear-gradient(to right, #00c6fb 0%, #005bea 100%);
+	background-color:#005bea;
 	color: #fff;
 	border-radius: 5px;
-	&:hover {
+	border:none;
+	/* &:hover {
 		-webkit-transform: scale(1.02);
 		transform: scale(1.02);
-	}
+	} */
 `;
 
 const Logo = styled.img`

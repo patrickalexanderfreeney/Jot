@@ -11,15 +11,11 @@ export const Button = styled.button`
   margin: 0 24px;
   font-size: 14px;
   text-decoration: none;
+  border:none;
 
   &:hover {
     background: gray;
   }
 
-  ${(props) =>
-    props.outlined &&
-    css`
-      background: transparent;
-      border: 3px solid black;
-    `}
+ 
 `;

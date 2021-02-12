@@ -38,11 +38,11 @@ const Button = styled.button`
 	height: 2.5rem;
 	font-size: 100%;
 	align-self: center;
-	/* margin-top: 1rem; */
 	margin: 1rem;
-	background-image: linear-gradient(to right, #00c6fb 0%, #005bea 100%);
+	background-color: #005bea;
 	color: #fff;
 	border-radius: 5px;
+	border:none;
 	&:hover {
 		-webkit-transform: scale(1.02);
 		transform: scale(1.02);
