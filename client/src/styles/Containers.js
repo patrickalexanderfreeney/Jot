@@ -7,21 +7,7 @@ export const MainSection = styled.section`
 	display: -ms-flexbox;
 	display: flex;
 `;
-export const LeftPanel = styled.div`
-	width: 25vw;
-	height: 100%;
-	-ms-flex-line-pack: center;
-	align-content: center;
-	position: relative;
-	border: 2px solid transparent;
-	border-right-color: lightgrey;
-`;
-export const RightPanel = styled.div`
-	width: 75vw;
-	height: 100%;
-	position: relative;
-	overflow: scroll;
-`;
+
 export const JotList = styled.div`
 	height: 83%;
 	width: 100%;
@@ -92,9 +78,10 @@ export const Button = styled.button`
 	font-size: 100%;
 	align-self: center;
 	margin-top: 0.5rem;
-	background-image: linear-gradient(to right, #00c6fb 0%, #005bea 100%);
+	background-color:#005bea;
 	color: #fff;
 	border-radius: 5px;
+	border:none;
 	&:hover {
 		-webkit-transform: scale(1.02);
 		transform: scale(1.02);

@@ -1,5 +1,4 @@
 import React, { useEffect, useContext } from 'react';
-import { connect } from 'react-redux';
 import { PostContext } from './context/store';
 import Axios from 'axios';
 import JotCard from './JotCard';
