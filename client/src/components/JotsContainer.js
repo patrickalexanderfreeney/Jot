@@ -2,8 +2,7 @@ import React, { useEffect, useContext } from 'react';
 import { PostContext } from './context/store';
 import Axios from 'axios';
 import JotCard from './JotCard';
-import SearchBar from './SearchBar';
-import { JotList } from '../styles/Containers';
+// import { JotList } from '../styles/Containers';
 
 export default function JotsContainer(props){
 	const [state, dispatch] = useContext(PostContext);
@@ -80,8 +79,7 @@ export default function JotsContainer(props){
 	console.log(state.jots);
 	return (
 		<>
-			<SearchBar resetJots={resetJots} filterJot={filterJot} />
-			<JotList>
+			{/* <JotList> */}
 				{state.jots.map((jot) => (
 					<JotCard
 						key={jot.id}
@@ -92,7 +90,7 @@ export default function JotsContainer(props){
 						selectJot={props.selectJot}
 					/>
 				))}
-			</JotList>
+			{/* </JotList> */}
 		</>
 	);
 };

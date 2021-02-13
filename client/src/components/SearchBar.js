@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { SearchDiv, Input, Button } from '../styles/Containers';
+import { SearchDiv, Input } from '../styles/Containers';
+import { Button } from '../styles/Buttons';
 
 const SearchBar = ({ filterJot, resetJots }) => {
 	const [searchTerm, setSearchTerm] = useState('');
@@ -16,9 +17,8 @@ const SearchBar = ({ filterJot, resetJots }) => {
 	return (
 		<SearchDiv>
 			<form onSubmit={handleSearch}>
-				<label>
 					<Input
-						width='100%'
+						width='40%'
 						type='text'
 						value={searchTerm}
 						placeholder='Search...'
@@ -26,9 +26,8 @@ const SearchBar = ({ filterJot, resetJots }) => {
 							setSearchTerm(e.target.value);
 						}}
 					/>
-				</label>
-			</form>
 			<Button onClick={handleReset}>Clear</Button>
+			</form>
 		</SearchDiv>
 	);
 };

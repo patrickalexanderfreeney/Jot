@@ -1,28 +1,23 @@
 import styled from 'styled-components';
 
 export const MainSection = styled.section`
-	height: 91vh;
+	height: 100vh;
 	width: 100vw;
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
-`;
-
-export const JotList = styled.div`
-	height: 83%;
-	width: 100%;
-	overflow: scroll;
-	overflow-x: hidden;
-	margin-top: 20%;
+	position:relative;
+	justify-content:center;
 `;
 export const SearchDiv = styled.div`
-	display: flex;
+	/* display:block; */
 	padding: 20px 10px;
-	width: 100%;
+	width: 65%;
 	background: white;
 	position: absolute;
-	top: 3%;
-	z-index: 1;
+	background-color:red;
+	text-align: center;
+
 `;
 
 export const Card = styled.div`
@@ -32,10 +27,6 @@ export const Card = styled.div`
 	transition: 0.3s;
 	border: 1px solid transparent;
 	border-bottom-color: lightgrey;
-`;
-
-export const CardContainer = styled.div`
-	padding: 2px 16px;
 `;
 
 export const Form = styled.form`
@@ -59,7 +50,7 @@ export const Label = styled.label`
 export const Input = styled.input`
 	width: ${(props) => props.width};
 	height: 35px;
-	border: 2px solid rgba(0, 0, 0, 0.2);
+	border: none;
 	background-color: #fff;
 	font-size: 100%;
 	border-radius: 5px;

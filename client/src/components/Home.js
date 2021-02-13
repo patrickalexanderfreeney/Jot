@@ -3,6 +3,8 @@ import PostStore from './context/store';
 import NavBar from './Navbar';
 import JotsContainer from './JotsContainer';
 import JotForm from './JotForm';
+import SearchBar from './SearchBar';
+
 import { MainSection, LeftPanel, RightPanel } from '../styles/Containers';
 
 const Home = (props) => {
@@ -11,11 +13,11 @@ const Home = (props) => {
 			<PostStore>
 				<NavBar />
 				<MainSection>
-					<LeftPanel>
-						<JotsContainer />
-					</LeftPanel>
-					{/* <RightPanel>
-					</RightPanel> */}
+					<SearchBar 
+					// resetJots={resetJots} filterJot={filterJot} 
+					/>
+					<JotsContainer />
+						
 				</MainSection>
 			</PostStore>
 		</>
