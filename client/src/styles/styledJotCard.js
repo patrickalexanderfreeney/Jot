@@ -1,20 +1,6 @@
 import styled from 'styled-components';
 
-const CardContainer = styled.div`
-	padding: 2px 16px;
 
-	div {
-		display: flex;
-	}
-`;
-const Card = styled.div`
-	margin: 10px 5px;
-	padding: 1rem;
-	-webkit-transition: 0.3s;
-	transition: 0.3s;
-	border: 1px solid transparent;
-	border-bottom-color: lightgrey;
-`;
 const Button = styled.button`
 	width: 300px;
 	height: 35px;

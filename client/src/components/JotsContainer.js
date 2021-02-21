@@ -2,7 +2,7 @@ import React, { useEffect, useContext } from 'react';
 import { PostContext } from './context/store';
 import Axios from 'axios';
 import JotCard from './JotCard';
-// import { JotList } from '../styles/Containers';
+import { JotDiv } from '../styles/Containers';
 
 export default function JotsContainer(props){
 	const [state, dispatch] = useContext(PostContext);
@@ -79,7 +79,7 @@ export default function JotsContainer(props){
 	console.log(state.jots);
 	return (
 		<>
-			{/* <JotList> */}
+			<JotDiv>
 				{state.jots.map((jot) => (
 					<JotCard
 						key={jot.id}
@@ -90,7 +90,7 @@ export default function JotsContainer(props){
 						selectJot={props.selectJot}
 					/>
 				))}
-			{/* </JotList> */}
+			</JotDiv>
 		</>
 	);
 };
