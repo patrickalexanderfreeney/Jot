@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-import { SearchDiv, Input } from '../styles/Containers';
-import { Button } from '../styles/Buttons';
 
 const SearchBar = ({ filterJot, resetJots }) => {
 	const [searchTerm, setSearchTerm] = useState('');

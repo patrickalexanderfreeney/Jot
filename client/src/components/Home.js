@@ -5,7 +5,6 @@ import JotsContainer from './JotsContainer';
 import JotForm from './JotForm';
 import SearchBar from './SearchBar';
 
-import { MainSection, LeftPanel, RightPanel } from '../styles/Containers';
 
 const Home = (props) => {
 	return (

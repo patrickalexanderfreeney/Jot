@@ -1,6 +1,5 @@
 import React from 'react';
 import { useHistory, Link } from 'react-router-dom';
-import { Nav, LogoImg, Wrapper, Button } from '../styles/NavBar';
 import LogoSrc from '../styles/mediaAssets/jot-logo.ico';
 
 const NavBar = (props) => {

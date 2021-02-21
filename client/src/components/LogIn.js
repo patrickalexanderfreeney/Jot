@@ -1,14 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import {
-	Section,
-	Card,
-	Form,
-	Img,
-	Label,
-	Input,
-	Button
-} from '../styles/AuthForm';
+
 import Axios from 'axios';
 import LogoSrc from '../styles/mediaAssets/jot-logo.ico';
 

@@ -1,6 +1,5 @@
 import React from 'react';
 import NavBar from '../components/Navbar';
-import { Section, Header, Title } from '../styles/StyledLanding';
 
 const Landing = () => {
 	return (

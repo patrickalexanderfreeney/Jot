@@ -1,14 +1,6 @@
 import React, { useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
-import {
-	Section,
-	Card,
-	Img,
-	Form,
-	Label,
-	Input,
-	Button
-} from '../styles/AuthForm';
+
 import Axios from 'axios';
 
 import LogoSrc from '../styles/mediaAssets/jot-logo.ico';
