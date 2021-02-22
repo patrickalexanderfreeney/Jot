@@ -29,10 +29,10 @@ const SearchBar = ({ filterJot, resetJots }) => {
 	return (
 			<form classNames={classes.searchBar}onSubmit={handleSearch}>
 					<TextField
-						width='40%'
+            variant="outlined"
+            label="It goes something like...." 
 						type='text'
 						value={searchTerm}
-						placeholder='Search...'
 						onChange={(e) => {
 							setSearchTerm(e.target.value);
 						}}
