@@ -1,15 +1,18 @@
-import { makeStyles } from '@material-ui/core/styles';
+// import { makeStyles } from '@material-ui/core/styles';
 
-const useJotStyling = makeStyles((theme) => ({
-    root: {
-      flexGrow: 1,
-    },
-    menuButton: {
-      marginRight: theme.spacing(2),
-    },
-    title: {
-      flexGrow: 1,
-    },
-  }));
+// export const useJotStyling = makeStyles((theme) => ({
+    
+//     const navRoot = {
+//         flexGrow: 1,
+//       },
+//     menuButton: {
+//       marginRight: theme.spacing(2),
+//     },
+//     navTitle: {
+//       flexGrow: 1,
+//     },
 
-export default useJotStyling;
+// })
+// return [navRoot, menuButton, navTitle];
+
+// );

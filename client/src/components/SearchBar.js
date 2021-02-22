@@ -5,9 +5,10 @@ import { SearchDiv, Input } from '../styles/Containers';
 import { Button, TextField } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
-  searchBar: {
-    textAlign:'center',
-  },
+  // searchBar: {
+  //   textAlign:'center',
+  //   margin: '20rem',
+  // },
  
 }));
 
