@@ -1,8 +1,19 @@
 import React, { useState } from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+
 import { SearchDiv, Input } from '../styles/Containers';
-import { Button } from '../styles/Buttons';
+import { Button, TextField } from '@material-ui/core';
+
+const useStyles = makeStyles((theme) => ({
+  searchBar: {
+    textAlign:'center',
+  },
+ 
+}));
 
 const SearchBar = ({ filterJot, resetJots }) => {
+  const classes = useStyles();
+
 	const [searchTerm, setSearchTerm] = useState('');
 	const handleSearch = (e) => {
 		e.preventDefault();
@@ -15,9 +26,8 @@ const SearchBar = ({ filterJot, resetJots }) => {
 	};
 
 	return (
-		<SearchDiv>
-			<form onSubmit={handleSearch}>
-					<Input
+			<form classNames={classes.searchBar}onSubmit={handleSearch}>
+					<TextField
 						width='40%'
 						type='text'
 						value={searchTerm}
@@ -28,7 +38,6 @@ const SearchBar = ({ filterJot, resetJots }) => {
 					/>
 			<Button onClick={handleReset}>Clear</Button>
 			</form>
-		</SearchDiv>
 	);
 };
 
