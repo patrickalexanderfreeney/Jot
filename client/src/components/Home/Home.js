@@ -2,14 +2,14 @@ import React from 'react';
 import { Grid } from '@material-ui/core'
 import { makeStyles } from '@material-ui/styles';
 //
-import PostStore from './context/store';
-import NavBar from './Navbar';
-import JotsContainer from './JotsContainer'
-import SearchBar from './SearchBar';
+import PostStore from '../context/store';
+import NavBar from '../NavBar/Navbar';
+import JotsContainer from '../Jot/JotsContainer'
+import SearchBar from '../SearchBar';
 
 const useStyles = makeStyles((theme) => ({
 	homeMainContainer: {
-	  marginTop: '2rem',
+	//   marginTop: '2rem',
 	  paddingLeft: '6rem',
 	  paddingRight: '6rem',
 	
@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-const Home = (props) => {
+const Home = () => {
 	const classes = useStyles();
 
 	return (
@@ -44,7 +44,7 @@ const Home = (props) => {
 						container 
 						item 
 						className={classes.homeMainContainer}
-						spacing={3}
+						spacing={2}
 						direction="row"
 						justify="center"
 						alignItems="center"

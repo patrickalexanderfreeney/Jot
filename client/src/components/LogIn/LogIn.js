@@ -1,27 +1,30 @@
 import React, { useState } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import {
 	Section,
 	Card,
-	Img,
 	Form,
+	Img,
 	Label,
 	Input,
 	Button
-} from '../styles/AuthForm';
+} from '../../styles/AuthForm';
 import Axios from 'axios';
+import LogoSrc from '../../styles/mediaAssets/jot-logo.ico';
 
-import LogoSrc from '../styles/mediaAssets/jot-logo.ico';
 
-const SignUp = () => {
+export default function LogIn(props){
 	const [username, setUsername] = useState('');
 	const [password, setPassword] = useState('');
-	const [signedup, setSignedup] = useState(false);
 	const [isLoading, setIsLoading] = useState(false);
+	const [isError, setIsError] = useState(false);
+	const history = useHistory();
 
-	const signUp = async (e) => {
+	const logIn = async (e) => {
 		e.preventDefault();
+
 		setIsLoading(true);
+		setIsError(false);
 
 		const config = {
 			headers: {
@@ -30,9 +33,8 @@ const SignUp = () => {
 		};
 
 		try {
-			console.log(username);
 			const response = await Axios.post(
-				'http://localhost:3000/users',
+				'http://localhost:3000/login',
 				{
 					username,
 					password
@@ -40,13 +42,26 @@ const SignUp = () => {
 				config
 			);
 			console.log(response);
+
+			if (response.data.status === 200) {
+				localStorage.setItem(
+					'username',
+					JSON.stringify(response.data.username)
+				);
+				localStorage.setItem('token', response.data.token);
+				localStorage.setItem('id', response.data.id);
+				setIsLoading(false);
+				setIsError(false);
+				console.log(isError);
+				history.push('/home');
+			} else {
+				setIsLoading(false);
+			}
+		} catch (error) {
 			setIsLoading(false);
-			setSignedup(true);
-		} catch (error) {}
+			setIsError(true);
+		}
 	};
-	if (signedup) {
-		return <Redirect to='/login' />;
-	}
 
 	return (
 		<Section>
@@ -54,15 +69,16 @@ const SignUp = () => {
 				<div>
 					<Img src={LogoSrc} alt='Jot Logo with blue gradient feather' />
 				</div>
-				<h2>Sign Up</h2>
+				<h2>Log In</h2>
 				<Form>
 					<Label>
 						Username:
 						<Input
+							value={username}
 							onChange={(e) => {
 								setUsername(e.target.value);
 							}}
-							value={username}
+							width='100%'
 							type='text'
 							placeholder='username'
 						/>
@@ -70,22 +86,21 @@ const SignUp = () => {
 					<Label>
 						Password:
 						<Input
+							type='password'
+							value={password}
 							onChange={(e) => {
 								setPassword(e.target.value);
 							}}
-							value={password}
-							type='password'
 							placeholder='password'
 						/>
 					</Label>
-					<Button onClick={signUp}>
-						{isLoading ? 'Signing Up...' : 'Sign Up'}
+					<Button disabled={isLoading} onClick={logIn}>
+						{isLoading ? 'Logging in...' : 'Log In'}
 					</Button>
 				</Form>
-				<Link to='/login'>Already have an account?</Link>
+				<Link to='/signup'>Don't have an account?</Link>
 				<Link to='/'>Go back</Link>
 			</Card>
 		</Section>
 	);
 };
-export default SignUp;

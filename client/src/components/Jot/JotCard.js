@@ -1,19 +1,24 @@
 import React from 'react';
-//
-import { makeStyles, Card, CardActions, CardContent, Button, Typography } from '@material-ui/core';
+
+import { makeStyles, Card, CardActions, CardContent, Button, Typography, Paper } from '@material-ui/core';
+
+
 
 const useStyles = makeStyles({
 	pos: {
 	  marginBottom: 12,
 	},
+	root: {
+		maxWidth:'300px'
+	}
+	
   });
 
 const JotCard = ({ jot, readJot, deleteJot, selectJot }) => {
 	const classes = useStyles();
-  	const bull = <span className={classes.bullet}>•</span>;
 
 	return (
-		
+			<Paper className={classes.root}>
 			<Card className={classes.root} variant="outlined">
 			<CardContent>
 			
@@ -32,6 +37,7 @@ const JotCard = ({ jot, readJot, deleteJot, selectJot }) => {
 			<Button size="small">Learn More</Button>
 			</CardActions>
 			</Card>
+			</Paper>
 				);
 };
 

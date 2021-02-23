@@ -1,7 +1,6 @@
 import React from 'react';
-import { useHistory, Link } from 'react-router-dom';
-import { Nav, LogoImg, Wrapper } from '../styles/NavBar';
-import LogoSrc from '../styles/mediaAssets/jot-logo.ico';
+import { useHistory } from 'react-router-dom';
+import LogoSrc from '../../styles/mediaAssets/jot-logo.ico';
 
 import { fade, makeStyles, Button, AppBar, Toolbar, IconButton, 
   Typography, InputBase, MenuItem, Menu} from '@material-ui/core';
@@ -81,6 +80,10 @@ const useStyles = makeStyles((theme) => ({
     },
   },
 }));
+
+// const filterJot = async (searchTerm) => {
+//   dispatch({ type: 'FILTERJOTS', payload: searchTerm });
+// };
 
 const NavBar = (props) => {
 	const classes = useStyles();

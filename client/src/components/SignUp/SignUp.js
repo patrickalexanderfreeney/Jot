@@ -1,29 +1,27 @@
 import React, { useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import {
 	Section,
 	Card,
-	Form,
 	Img,
+	Form,
 	Label,
 	Input,
 	Button
-} from '../styles/AuthForm';
+} from '../../styles/AuthForm';
 import Axios from 'axios';
-import LogoSrc from '../styles/mediaAssets/jot-logo.ico';
 
-export default function LogIn(props){
+import LogoSrc from '../../styles/mediaAssets/jot-logo.ico';
+
+const SignUp = () => {
 	const [username, setUsername] = useState('');
 	const [password, setPassword] = useState('');
+	const [signedup, setSignedup] = useState(false);
 	const [isLoading, setIsLoading] = useState(false);
-	const [isError, setIsError] = useState(false);
-	const history = useHistory();
 
-	const logIn = async (e) => {
+	const signUp = async (e) => {
 		e.preventDefault();
-
 		setIsLoading(true);
-		setIsError(false);
 
 		const config = {
 			headers: {
@@ -32,8 +30,9 @@ export default function LogIn(props){
 		};
 
 		try {
+			console.log(username);
 			const response = await Axios.post(
-				'http://localhost:3000/login',
+				'http://localhost:3000/users',
 				{
 					username,
 					password
@@ -41,26 +40,13 @@ export default function LogIn(props){
 				config
 			);
 			console.log(response);
-
-			if (response.data.status === 200) {
-				localStorage.setItem(
-					'username',
-					JSON.stringify(response.data.username)
-				);
-				localStorage.setItem('token', response.data.token);
-				localStorage.setItem('id', response.data.id);
-				setIsLoading(false);
-				setIsError(false);
-				console.log(isError);
-				history.push('/home');
-			} else {
-				setIsLoading(false);
-			}
-		} catch (error) {
 			setIsLoading(false);
-			setIsError(true);
-		}
+			setSignedup(true);
+		} catch (error) {}
 	};
+	if (signedup) {
+		return <Redirect to='/login' />;
+	}
 
 	return (
 		<Section>
@@ -68,16 +54,15 @@ export default function LogIn(props){
 				<div>
 					<Img src={LogoSrc} alt='Jot Logo with blue gradient feather' />
 				</div>
-				<h2>Log In</h2>
+				<h2>Sign Up</h2>
 				<Form>
 					<Label>
 						Username:
 						<Input
-							value={username}
 							onChange={(e) => {
 								setUsername(e.target.value);
 							}}
-							width='100%'
+							value={username}
 							type='text'
 							placeholder='username'
 						/>
@@ -85,21 +70,22 @@ export default function LogIn(props){
 					<Label>
 						Password:
 						<Input
-							type='password'
-							value={password}
 							onChange={(e) => {
 								setPassword(e.target.value);
 							}}
+							value={password}
+							type='password'
 							placeholder='password'
 						/>
 					</Label>
-					<Button disabled={isLoading} onClick={logIn}>
-						{isLoading ? 'Logging in...' : 'Log In'}
+					<Button onClick={signUp}>
+						{isLoading ? 'Signing Up...' : 'Sign Up'}
 					</Button>
 				</Form>
-				<Link to='/signup'>Don't have an account?</Link>
+				<Link to='/login'>Already have an account?</Link>
 				<Link to='/'>Go back</Link>
 			</Card>
 		</Section>
 	);
 };
+export default SignUp;

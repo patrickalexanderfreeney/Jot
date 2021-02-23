@@ -1,10 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import PrivateRoute from './components/PrivateRoute';
-import SignUp from './components/SignUp';
-import LogIn from './components/LogIn';
-import Landing from './components/Landing';
-import Home from './components/Home';
+
+import { Home, Landing, LogIn, SignUp, PrivateRoute } from './components';
 import GlobalStyle from './styles/GlobalStyle';
 
 const App = (props) => {

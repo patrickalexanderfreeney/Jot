@@ -27,8 +27,8 @@ const SearchBar = ({ filterJot, resetJots }) => {
 	return (
 			<form classNames={classes.searchBar}onSubmit={handleSearch}>
 					<TextField
-            variant="outlined"
-            label="It goes something like...." 
+						variant="outlined"
+						label="It goes something like...." 
 						type='text'
 						value={searchTerm}
 						onChange={(e) => {
