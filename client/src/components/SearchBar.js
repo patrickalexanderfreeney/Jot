@@ -1,17 +1,8 @@
 import React, { useState } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import { Button, TextField } from '@material-ui/core';
+import { Button, TextField, Paper, Card } from '@material-ui/core';
 
-const useStyles = makeStyles((theme) => ({
-  // searchBar: {
-  //   textAlign:'center',
-  //   margin: '20rem',
-  // },
- 
-}));
 
 const SearchBar = ({ filterJot, resetJots }) => {
-  const classes = useStyles();
 
 	const [searchTerm, setSearchTerm] = useState('');
 	const handleSearch = (e) => {
@@ -25,18 +16,43 @@ const SearchBar = ({ filterJot, resetJots }) => {
 	};
 
 	return (
-			<form classNames={classes.searchBar}onSubmit={handleSearch}>
+			<Paper elevation={4}>
+			<form elevation={2} onSubmit={handleSearch}>
 					<TextField
-						variant="outlined"
-						label="It goes something like...." 
+						autoFocus={true}
+						fullWidth={true}
+						// variant="filled"
+						label="Title?" 
 						type='text'
 						value={searchTerm}
 						onChange={(e) => {
 							setSearchTerm(e.target.value);
 						}}
 					/>
-			<Button onClick={handleReset}>Clear</Button>
+					<TextField
+						fullWidth={true}
+						// variant="filled"
+						multiline
+						label="What's on your mind...?" 
+						type='text'
+						value={searchTerm}
+						onChange={(e) => {
+							setSearchTerm(e.target.value);
+						}}
+					/>
+					<TextField
+						fullWidth={true}
+						// variant="filled"
+						multiline
+						label="Any tags...?" 
+						type='text'
+						value={searchTerm}
+						onChange={(e) => {
+							setSearchTerm(e.target.value);
+						}}
+					/>
 			</form>
+			</Paper>
 	);
 };
 

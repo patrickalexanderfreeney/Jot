@@ -1,11 +1,27 @@
 import React from 'react';
-import { Grid } from '@material-ui/core'
-import { makeStyles } from '@material-ui/styles';
-//
+import { Grid, createMuiTheme } from '@material-ui/core'
+import { makeStyles, ThemeProvider } from '@material-ui/styles';
+import { grey } from '@material-ui/core/colors';
+
+
 import PostStore from '../context/store';
 import NavBar from '../NavBar/Navbar';
 import JotsContainer from '../Jot/JotsContainer'
 import SearchBar from '../SearchBar';
+
+const theme = createMuiTheme({
+	color: {
+	  primary: {
+		// Purple and green play nicely together.
+		main: grey[50],
+		search: grey[500]
+	  },
+	  secondary: {
+		// This is green.A700 as hex.
+		main: grey[500],
+	  },
+	},
+  });
 
 const useStyles = makeStyles((theme) => ({
 	homeMainContainer: {
@@ -18,7 +34,9 @@ const useStyles = makeStyles((theme) => ({
 		textAlign: 'center',
 	},
 	rootItem: {
-		marginTop: '3rem',
+		marginTop: '2rem',
+		width:'50rem',
+		alignSelf:'center',
 	}
 }));
 
@@ -29,6 +47,7 @@ const Home = () => {
 	return (
 		<>
 			<PostStore>
+			<ThemeProvider theme={theme}>
 				<Grid container direction='column' >
 				<Grid item>
 				<NavBar />
@@ -57,6 +76,7 @@ const Home = () => {
 
 				</Grid>
 				</Grid>
+				</ThemeProvider>
 			</PostStore>
 		</>
 	);

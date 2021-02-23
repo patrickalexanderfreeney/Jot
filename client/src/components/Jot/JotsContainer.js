@@ -66,6 +66,10 @@ export default function JotsContainer(props){
 	const readJot = async (jot) => {
 		dispatch({ type: 'READJOT', payload: jot });
 	};
+
+// 	git branch -m master main
+// git fetch origin
+// git branch -u origin/main main
 	
 	
 	

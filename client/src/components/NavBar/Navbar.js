@@ -3,11 +3,11 @@ import { useHistory } from 'react-router-dom';
 import LogoSrc from '../../styles/mediaAssets/jot-logo.ico';
 
 import { fade, makeStyles, Button, AppBar, Toolbar, IconButton, 
-  Typography, InputBase, MenuItem, Menu} from '@material-ui/core';
-//
+  Typography, InputBase,Input, MenuItem, Menu} from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import MoreIcon from '@material-ui/icons/MoreVert';
+
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -25,21 +25,17 @@ const useStyles = makeStyles((theme) => ({
   },
   
   title: {
-    display: 'none',
     [theme.breakpoints.up('sm')]: {
       display: 'block',
     },
   },
   search: {
     position: 'relative',
-    borderRadius: theme.shape.borderRadius,
-    backgroundColor: fade(theme.palette.common.white, 0.15),
-    '&:hover': {
-      backgroundColor: fade(theme.palette.common.white, 0.25),
-    },
-    marginRight: theme.spacing(2),
-    marginLeft: 0,
-    width: '100%',
+    // borderRadius: theme.shape.borderRadius,
+    // backgroundColor: 'color.secondary',
+    // marginRight: theme.spacing(10),
+    // marginLeft: 0,
+    // width: '100%',
     [theme.breakpoints.up('sm')]: {
       marginLeft: theme.spacing(3),
       width: 'auto',
@@ -55,7 +51,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
   },
   inputRoot: {
-    color: 'inherit',
+    color: 'darkGrey',
   },
   inputInput: {
     padding: theme.spacing(1, 1, 1, 0),
@@ -164,12 +160,12 @@ const NavBar = (props) => {
 	return token ? (
 		
     <div className={classes.grow}>
-      <AppBar position="static">
+      <AppBar position="static" color="color.primary" elevation={3}>
         <Toolbar>
         <Typography variant="h6" className={classes.title} color='inherit'>
             <img alt="Jots" height='54px' src={LogoSrc} className={classes.image}/>
           </Typography>
-          <div className={classes.search}>
+          <div className={classes.search}  >
             <div className={classes.searchIcon}>
               <SearchIcon />
             </div>
@@ -215,7 +211,7 @@ const NavBar = (props) => {
 	
 	) : (
 		<div className={classes.root}>
-      <AppBar position="static">
+      <AppBar position="static" color='color.primary'>
         <Toolbar>
           <Typography variant="h6" className={classes.guestTitle} color='inherit'>
             <img alt="Jots" height='54px' src={LogoSrc} className={classes.image}/>
