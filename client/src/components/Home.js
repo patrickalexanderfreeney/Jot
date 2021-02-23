@@ -9,15 +9,16 @@ import SearchBar from './SearchBar';
 
 const useStyles = makeStyles((theme) => ({
 	homeMainContainer: {
-	  marginTop: '4rem',
-	  paddingLeft: '10rem',
-	  paddingRight: '6rem'
+	  marginTop: '2rem',
+	  paddingLeft: '6rem',
+	  paddingRight: '6rem',
+	
 	},
 	root: {
 		textAlign: 'center',
 	},
 	rootItem: {
-		marginTop: '2rem',
+		marginTop: '3rem',
 	}
 }));
 
@@ -32,16 +33,28 @@ const Home = (props) => {
 				<Grid item>
 				<NavBar />
 				</Grid>
-				<Grid item container direction='column' className={classes.root}>
+				<Grid container item direction='column' className={classes.root}>
 					<Grid item className={classes.rootItem}>
 					<SearchBar 
 					// resetJots={resetJots} filterJot={filterJot} 
 					/>
 					</Grid>
 				
-					<Grid item container className={classes.homeMainContainer}>
+					<Grid 
+						container 
+						item 
+						className={classes.homeMainContainer}
+						spacing={3}
+						direction="row"
+						justify="center"
+						alignItems="center"
+					>
+					<Grid item xs={0} s={2} />
+					<Grid item xs={12} s={8} />
 					<JotsContainer />
 					</Grid>
+					<Grid xs={0} s={2} />
+
 				</Grid>
 				</Grid>
 			</PostStore>
