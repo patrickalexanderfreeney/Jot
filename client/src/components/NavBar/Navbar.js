@@ -1,18 +1,33 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { useHistory } from 'react-router-dom';
-import LogoSrc from '../../styles/mediaAssets/jot-logo.ico';
+import LogoSrc from '../../styles/mediaAssets/feather_icon.png';
 
 import { fade, makeStyles, Button, AppBar, Toolbar, IconButton, 
   Typography, InputBase,Input, MenuItem, Menu} from '@material-ui/core';
-import SearchIcon from '@material-ui/icons/Search';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import MoreIcon from '@material-ui/icons/MoreVert';
+import SearchIcon from '@material-ui/icons/Search';
+
 
 
 const useStyles = makeStyles((theme) => ({
   grow: {
     flexGrow: 1,
-    minHeight: 85,
+    minHeight: 100,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  appBarWrapper: {
+    width:'80%',
+    margin:'0 auto'
+  },
+  
+  nav: {
+    backgroundColor: 'rgba(255, 255, 255, 0.7)',
+    boxShadow: 'none',
+    color:'white',
+    
+
   },
   root: {
     flexGrow: 1,
@@ -22,6 +37,7 @@ const useStyles = makeStyles((theme) => ({
   },
   image: {
     flexGrow: 1,
+    marginTop: '1.5rem'
   },
   
   title: {
@@ -31,11 +47,6 @@ const useStyles = makeStyles((theme) => ({
   },
   search: {
     position: 'relative',
-    // borderRadius: theme.shape.borderRadius,
-    // backgroundColor: 'color.secondary',
-    // marginRight: theme.spacing(10),
-    // marginLeft: 0,
-    // width: '100%',
     [theme.breakpoints.up('sm')]: {
       marginLeft: theme.spacing(3),
       width: 'auto',
@@ -84,11 +95,20 @@ const useStyles = makeStyles((theme) => ({
 const NavBar = (props) => {
 	const classes = useStyles();
 	const history = useHistory();
+  const [open, setOpen] = useState(false);
+
 	const token = localStorage.token;
   
   const logOut = () => {
     localStorage.clear();
     history.push('/');
+  };
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
   };
   //
   
@@ -149,8 +169,11 @@ const NavBar = (props) => {
           aria-controls="primary-search-account-menu"
           aria-haspopup="true"
           color="inherit"
+          
         >
-          <AccountCircle />
+          <AccountCircle
+          style={{ color: 'white' }}
+          />
         </IconButton>
         <p>Profile</p>
       </MenuItem>
@@ -160,12 +183,12 @@ const NavBar = (props) => {
 	return token ? (
 		
     <div className={classes.grow}>
-      <AppBar position="static" color="color.primary" elevation={3}>
-        <Toolbar>
+      <AppBar position="static" style={{ background: 'transparent', boxShadow: 'none'}} elevation={1}>
+        <Toolbar className={classes.appBarWrapper}>
         <Typography variant="h6" className={classes.title} color='inherit'>
-            <img alt="Jots" height='54px' src={LogoSrc} className={classes.image}/>
-          </Typography>
-          <div className={classes.search}  >
+            <img alt="Jots" height='65px' src={LogoSrc} className={classes.image}/>
+        </Typography>
+          <div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />
             </div>
@@ -187,8 +210,9 @@ const NavBar = (props) => {
               aria-haspopup="true"
               onClick={handleProfileMenuOpen}
               color="inherit"
+              
             >
-              <AccountCircle />
+              <AccountCircle style={{ fontSize: 40, color: 'rgb(5,157,231)' }} color="disabled" />
             </IconButton>
           </div>
           <div className={classes.sectionMobile}>
@@ -211,15 +235,23 @@ const NavBar = (props) => {
 	
 	) : (
 		<div className={classes.root}>
-      <AppBar position="static" color='color.primary'>
-        <Toolbar>
+      <AppBar position="static" style={{ background: 'transparent', boxShadow: 'none'}} elevation={1}>
+        <Toolbar className={classes.appBarWrapper} >
           <Typography variant="h6" className={classes.guestTitle} color='inherit'>
-            <img alt="Jots" height='54px' src={LogoSrc} className={classes.image}/>
+            <img alt="Jots" height='65px' src={LogoSrc} className={classes.image}/>
           </Typography>
           <div className={classes.grow}/>
-          <Button color="inherit" onClick={() => {
-            history.push('/login');
-          }}>Login</Button>
+          <Button 
+            variant="outlined" 
+            size='large'  
+            disableElevation 
+            style={{ color: '#1570c7' }}
+            href="/signup" 
+            >Join</Button>
+          <Button 
+            style={{ fontSize: '1rem' }} 
+            href="/login"
+          >Login</Button>
         </Toolbar>
       </AppBar>
     </div>
