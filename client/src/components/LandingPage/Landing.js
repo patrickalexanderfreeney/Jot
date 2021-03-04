@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useReducer} from 'react';
+import { authContext } from '../context/authStore'
 import { Grid, Typography, Button, makeStyles } from '@material-ui/core'
+import { NavBar } from '../../components'
 import backgroundImg from '../../styles/mediaAssets/pexels-eva-elijas-5779296.jpg'
-
-
 
 const useStyles = makeStyles((theme) => ({
 	grow: {
@@ -26,27 +26,41 @@ const useStyles = makeStyles((theme) => ({
 
 const Landing = () => {
 	const classes = useStyles();
+	const [ dispatch ] = useReducer(authContext);
+
+	const sendToSignUp = () => {
+		dispatch({ type: 'SIGNUP' });		
+	}
+
 
 	return (
 		<Grid container>
+			<Grid item style={{border:'5px solid red', width:'100%'}}>	
+			<NavBar/>
+
+			</Grid>
 			<Grid container item className={classes.grow}  >
 					<Typography 
 					variant="h1"
-					style={{color:'white'}}
-					>
-						Welcome To Jot. <br/> 
-						Here for your thoughts...
+					style={{color:'white', font: 'Cormorant', fontSize: 144, textShadow: '0px 4px 10px rgba(0, 0, 0, 0.25)'}}
+					>Jot. 
+					</Typography> 
+					<Typography 
+					variant="h3"
+					style={{color:'white', font: 'Work Sans', textShadow: '0px 4px 10px rgba(0, 0, 0, 0.50)'}}
+					fontSize='48px'
+					fontFamily= 'Work Sans'
+					elevation={4}
+					>A space for your thoughts. 
 					</Typography> 
 					<Button variant="contained" 
 						size='large' 
 						color="primary" 
-						disableElevation 
-						href="/signup"
-						style={{ fontSize: '1rem', color: '#fff', margin:'2rem' }} 
-					>New Here? Let's Get started.</Button>
-			</Grid>
-			<Grid className={classes.overlay}>
-
+						elevation={5}
+						href="/auth"
+						onClick={sendToSignUp}
+						style={{ fontSize: '22px', color: '#fff', margin:'2rem' }} 
+					>New Here? Sign Up</Button>
 			</Grid>
 		</Grid>
 	);

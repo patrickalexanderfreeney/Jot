@@ -1,6 +1,6 @@
 import React, { createContext, useReducer } from 'react';
 
-export const PostContext = createContext({});
+export const jotContext = createContext({});
 
 const initialState = {
 	jots: [],
@@ -52,14 +52,14 @@ function reducer(state, action) {
 	}
 }
 
-const PostStore = ({ children }) => {
+const JotStore = ({ children })=> {
 	const [state, dispatch] = useReducer(reducer, initialState);
 
 	return (
-		<PostContext.Provider value={[state, dispatch]}>
+		<jotContext.Provider value={[state, dispatch]}>
 			{children}
-		</PostContext.Provider>
+		</jotContext.Provider>
 	);
 };
 
-export default PostStore;
+export default JotStore;

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { makeStyles, Card, CardActions, CardContent, Button, Typography, Paper, Input } from '@material-ui/core';
+import { makeStyles, Card, CardActions, CardContent, Button, Typography, Paper } from '@material-ui/core';
 import DeleteIcon from '@material-ui/icons/Delete';
 
 
@@ -32,11 +32,7 @@ const JotCard = ({ jot, readJot, deleteJot, selectJot }) => {
 				Begins...{jot.body}...They said.
 			</Typography>
 			</CardContent>
-			<CardActions>
-			<Input
-			Type='text'
-			>
-			</Input>	
+			<CardActions>	
 			<Button size="medium">Read</Button>
 			<Button
 				variant="contained"

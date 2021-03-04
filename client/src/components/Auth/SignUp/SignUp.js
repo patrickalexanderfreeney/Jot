@@ -66,8 +66,8 @@ const SignUp = () => {
 						{isLoading ? 'Signing Up...' : 'Sign Up'}
 					</Button>
 				</form>
-				<Link to='/login'>Already have an account?</Link>
-				<Link to='/'>Go back</Link>
+				{/* <Link to='/login'>Already have an account?</Link> */}
+				<Link to='/welcome'>Go back</Link>
 			</Card>
 		</section>
 	);

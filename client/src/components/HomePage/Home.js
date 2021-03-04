@@ -1,41 +1,15 @@
 import React from 'react';
-import PostStore from '../context/store';
-import { JotsContainer, SearchBar} from '..'
-
-import { Grid, createMuiTheme } from '@material-ui/core'
-import { makeStyles, ThemeProvider } from '@material-ui/styles';
-import { grey } from '@material-ui/core/colors';
-
-
-const theme = createMuiTheme({
-	color: {
-	  primary: {
-		main: grey[50],
-		search: grey[500]
-	  },
-	  secondary: {
-		main: grey[500],
-	  },
-	},
-	
-	// home: {
-	// 	backgroundImage: `url(${backgroundImg})`,
-	// 	backgroundRepeat: "no-repeat",
-	// 	backgroundPosition: "top",
-	// 	backgroundSize: "cover",
-	// 	backgroundAttachment: "fixed",
-	// 	height: "100%"
-	// },
-	
-});
+import JotStore from '../context/jotStore';
+import { JotsContainer, NavBar } from '../../components'
+import { Grid } from '@material-ui/core'
+import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles((theme) => ({
 	homeMainContainer: {
 	  paddingLeft: '6rem',
 	  paddingRight: '6rem',
-	
+	  border: '5px solid red'	
 	},
-	
 	root: {
 		textAlign: 'center',
 	},
@@ -45,46 +19,50 @@ const useStyles = makeStyles((theme) => ({
 		paddingRight: '2rem',
 		width:'35rem',
 		alignSelf:'center',
-		// padding: '2rem'
+		justifyContent:'center',
+		border: '5px solid red'
 	}
 }));
+	
 
 
 const Home = () => {
 	const classes = useStyles();
 
 	return (
-		<>
-			<PostStore>
-			<ThemeProvider theme={theme}>
-				<Grid container direction='column' 
-				// className={classes.home} 
-				>
-				<Grid container item direction='column' className={classes.root}>
-					<Grid item xs={12}className={classes.rootItem}>
-					{/* <SearchBar/> */}
+			<JotStore>
+				<Grid container>
+					<Grid item >
+						<NavBar/>
 					</Grid>
-				
-					<Grid 
-						container 
-						item 
-						className={classes.homeMainContainer}
-						spacing={2}
-						direction="row"
-						justify="center"
-						alignItems="center"
-					>
-					<Grid item xs={0} s={2} />
-					<Grid item xs={12} s={8} />
-					<JotsContainer />
-					</Grid>
-					<Grid xs={0} s={2} />
+					<Grid container item direction='row' >
+						<Grid item xs={12} 
+						// className={classes.rootItem}
+						>
+							<div>Hello there</div>
+							<div>Hello there</div>
+							<div>Hello there</div>
+							<div>Hello there</div>
+							<div>Hello there</div>
+							<div>Hello there</div>
+						</Grid>
+					
+						<Grid 
+							container 
+							item 
+							// className={classes.homeMainContainer}
+							spacing={2}
+							direction="row"
+							justify="center"
+							alignItems="center"
+							xs={10}
+						>
+						<JotsContainer />
+						</Grid>
 
-				</Grid>
-				</Grid>
-				</ThemeProvider>
-			</PostStore>
-		</>
+					</Grid>
+					</Grid>
+			</JotStore>
 	);
 };
 

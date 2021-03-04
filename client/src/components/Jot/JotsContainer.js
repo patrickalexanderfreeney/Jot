@@ -1,11 +1,11 @@
 import React, { useEffect, useContext } from 'react';
-import { PostContext } from '../context/store';
+import { jotContext } from '../context/jotStore';
 import Axios from 'axios';
 import JotCard from './JotCard';
 import { Grid } from '@material-ui/core'
 
-export default function JotsContainer(props){
-	const [state, dispatch] = useContext(PostContext);
+const JotsContainer = (props) => {
+	const [ state, dispatch ] = useContext(jotContext);
 
 	const config = {
 		'Content-Type': 'application/json',
@@ -76,7 +76,9 @@ export default function JotsContainer(props){
 	return (
 		<>
 				{state.jots.map((jot) => (
-					<Grid item xs={12} sm={6} mg={4} lg={3} >
+					<Grid item 
+					xs={12} sm={4} 
+					>
 					<JotCard
 						key={jot.id}
 						clickable
@@ -90,4 +92,4 @@ export default function JotsContainer(props){
 		</>
 	);
 };
-
+export default JotsContainer;
