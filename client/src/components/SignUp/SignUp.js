@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
-import { Card, Button, Input, makeStyles, Paper } from '@material-ui/core'
-
-
+import { Paper, Button, Input, makeStyles, Grid } from '@material-ui/core'
 import Axios from 'axios';
 
 const SignUp = () => {
@@ -42,35 +40,48 @@ const SignUp = () => {
 
 	return (
 
-		<section>
-			<Card style={{maxWidth:'300px'}}>
-				<h2>Sign Up</h2>
-				<form>
-					<Input
-						onChange={(e) => {
-							setUsername(e.target.value);
-						}}
-						value={username}
-						type='text'
-						placeholder='username'
-					/>
-				
-					<Input
-						onChange={(e) => {
-							setPassword(e.target.value);
-						}}
-						value={password}
-						type='password'
-						placeholder='password'
-					/>
-			
-					<Button onClick={signUp}>
-						{isLoading ? 'Signing Up...' : 'Sign Up'}
-					</Button>
-				</form>
-				{/* <Link to='/login'>Already have an account?</Link> */}
-				<Link to='/welcome'>Go back</Link>
-			</Card>
+		<section styles={{ height:'100vh', position: 'relative'}}>
+			<Paper style={{position: 'absolute', transform: 'translate(50%, 50%)', top:'5%', right: '50%', width:'30%', height:'40%'}}>
+				<Grid container direction='column' style={{alignSelf:'center'}} align="center" justify="center">
+					<h2>Sign Up</h2>
+						<form>
+							<Grid container item direction='column' alignItems='center' justify='center' >
+								<Grid item>
+
+									<Input
+										onChange={(e) => {
+											setUsername(e.target.value);
+										}}
+										value={username}
+										type='text'
+										placeholder='username'
+									/>
+								</Grid>
+
+								<Grid item>
+									<Input
+										onChange={(e) => {
+											setPassword(e.target.value);
+										}}
+										value={password}
+										type='password'
+										placeholder='password'
+									/>
+								</Grid>
+						
+								<Grid item>
+									<Button onClick={signUp}>
+										{isLoading ? 'Signing Up...' : 'Sign Up'}
+									</Button>
+								</Grid>
+								
+							</Grid>
+						</form>
+
+						{/* <Link to='/login'>Already have an account?</Link> */}
+						<Link to='/welcome'>Go back</Link>
+				</Grid>
+			</Paper>
 		</section>
 	);
 };

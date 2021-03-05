@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import backgroundImg from '../../styles/mediaAssets/pexels-sunyu-kim-1544880.jpg'
 import AuthStore from '../context/authStore';
-import { Home, Landing, PrivateRoute, NavBar, LogIn } from '../../components';
+import { Home, Landing, PrivateRoute, NavBar, LogIn, SignUp } from '../../components';
 import {CssBaseline, makeStyles, ThemeProvider, createMuiTheme} from '@material-ui/core';
 
 const theme = createMuiTheme({
@@ -50,6 +50,7 @@ const App = () => {
 					<section className={classes.root}>
 					<Switch>
 						<Route exact path='/welcome' component={Landing} />
+						<Route exact path='/signup' component={SignUp} />
 						<Route exact path='/login' component={LogIn} />
 						<PrivateRoute exact path='/home' component={Home} />
 					</Switch>
