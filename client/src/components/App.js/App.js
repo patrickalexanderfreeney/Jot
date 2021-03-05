@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import backgroundImg from '../../styles/mediaAssets/pexels-sunyu-kim-1544880.jpg'
 import AuthStore from '../context/authStore';
-import { Home, Landing, AuthPage, PrivateRoute, NavBar, LogIn } from '../../components';
+import { Home, Landing, PrivateRoute, NavBar, LogIn } from '../../components';
 import {CssBaseline, makeStyles, ThemeProvider, createMuiTheme} from '@material-ui/core';
 
 const theme = createMuiTheme({
@@ -28,11 +28,11 @@ const theme = createMuiTheme({
 const useStyles = makeStyles((theme) => ({
 	
 		root: {
-			// backgroundImage: `url(${backgroundImg})`,
-			// backgroundRepeat: "no-repeat",
-			// backgroundPosition: "center",
-			// backgroundSize: "cover",
-			// backgroundAttachment: "fixed",
+			backgroundImage: `url(${backgroundImg})`,
+			backgroundRepeat: "no-repeat",
+			backgroundPosition: "center",
+			backgroundSize: "cover",
+			backgroundAttachment: "fixed",
 			minHeight: "100vh",
 			paddingBottom:'2rem'
 		},
