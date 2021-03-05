@@ -57,7 +57,7 @@ const Landing = () => {
 						size='large' 
 						color="primary" 
 						elevation={5}
-						href="/auth"
+						href="/signup"
 						onClick={sendToSignUp}
 						style={{ fontSize: '22px', color: '#fff', margin:'2rem' }} 
 					>New Here? Sign Up</Button>

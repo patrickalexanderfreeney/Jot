@@ -3,90 +3,90 @@ import { useHistory } from 'react-router-dom';
 import LogoSrc from '../../styles/mediaAssets/feather_icon.png';
 import { navBarStyles } from './Styles'
 import { Button, AppBar, Toolbar, IconButton, 
-  Typography, InputBase, MenuItem, Menu} from '@material-ui/core';
+  Typography, InputBase, MenuItem, Menu, makeStyles} from '@material-ui/core';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import SearchIcon from '@material-ui/icons/Search';
 
 
 
-// const useStyles = makeStyles((theme) => ({
-//   grow: {
-//     flexGrow: 1,
-//     minHeight: 100,
-//     alignItems: 'center',
-//     justifyContent: 'center',
-//   },
-//   appBarWrapper: {
-//     width:'80%',
-//     margin:'0 auto'
-//   },
+const useStyles = makeStyles((theme) => ({
+  grow: {
+    flexGrow: 1,
+    minHeight: 100,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  appBarWrapper: {
+    width:'80%',
+    margin:'0 auto'
+  },
   
-//   nav: {
-//     backgroundColor: 'rgba(255, 255, 255, 0.7)',
-//     boxShadow: 'none',
-//     color:'white',
+  nav: {
+    backgroundColor: 'rgba(255, 255, 255, 0.7)',
+    boxShadow: 'none',
+    color:'white',
     
 
-//   },
-//   root: {
-//     flexGrow: 1,
-//   },
-//   guestTitle: {
-//     flexGrow: 1,
-//   },
-//   image: {
-//     flexGrow: 1,
-//     marginTop: '1.5rem'
-//   },
+  },
+  root: {
+    flexGrow: 1,
+  },
+  guestTitle: {
+    flexGrow: 1,
+  },
+  image: {
+    flexGrow: 1,
+    marginTop: '1.5rem'
+  },
   
-//   title: {
-//     [theme.breakpoints.up('sm')]: {
-//       display: 'block',
-//     },
-//   },
-//   search: {
-//     position: 'relative',
-//     [theme.breakpoints.up('sm')]: {
-//       marginLeft: theme.spacing(3),
-//       width: 'auto',
-//     },
-//   },
-//   searchIcon: {
-//     padding: theme.spacing(0, 2),
-//     height: '100%',
-//     position: 'absolute',
-//     pointerEvents: 'none',
-//     display: 'flex',
-//     alignItems: 'center',
-//     justifyContent: 'center',
-//   },
-//   inputRoot: {
-//     color: 'darkGrey',
-//   },
-//   inputInput: {
-//     padding: theme.spacing(1, 1, 1, 0),
-//     // vertical padding + font size from searchIcon
-//     paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
-//     transition: theme.transitions.create('width'),
-//     width: '100%',
-//     [theme.breakpoints.up('md')]: {
-//       width: '20ch',
-//     },
-//   },
-//   sectionDesktop: {
-//     display: 'none',
-//     [theme.breakpoints.up('md')]: {
-//       display: 'flex',
-//     },
-//   },
-//   sectionMobile: {
-//     display: 'flex',
-//     [theme.breakpoints.up('md')]: {
-//       display: 'none',
-//     },
-//   },
-// }));
+  title: {
+    [theme.breakpoints.up('sm')]: {
+      display: 'block',
+    },
+  },
+  search: {
+    position: 'relative',
+    [theme.breakpoints.up('sm')]: {
+      marginLeft: theme.spacing(3),
+      width: 'auto',
+    },
+  },
+  searchIcon: {
+    padding: theme.spacing(0, 2),
+    height: '100%',
+    position: 'absolute',
+    pointerEvents: 'none',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  inputRoot: {
+    color: 'darkGrey',
+  },
+  inputInput: {
+    padding: theme.spacing(1, 1, 1, 0),
+    // vertical padding + font size from searchIcon
+    paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
+    transition: theme.transitions.create('width'),
+    width: '100%',
+    [theme.breakpoints.up('md')]: {
+      width: '20ch',
+    },
+  },
+  sectionDesktop: {
+    display: 'none',
+    [theme.breakpoints.up('md')]: {
+      display: 'flex',
+    },
+  },
+  sectionMobile: {
+    display: 'flex',
+    [theme.breakpoints.up('md')]: {
+      display: 'none',
+    },
+  },
+}));
 
 // const filterJot = async (searchTerm) => {
 //   dispatch({ type: 'FILTERJOTS', payload: searchTerm });
@@ -232,7 +232,6 @@ const NavBar = (props) => {
 			
 	
 	) : (
-		// <div>
       <AppBar position="static" style={{ background: 'transparent', boxShadow: 'none'}} elevation={1}>
         <Toolbar className={classes.appBarWrapper} >
           <Typography variant="h6" className={classes.guestTitle} color='inherit'>
@@ -242,11 +241,10 @@ const NavBar = (props) => {
           
           <Button 
             style={{ fontSize: '1rem' }} 
-            href="/auth"
+            href="/login"
           >Login</Button> 
         </Toolbar>
       </AppBar>
-    // </div>
 	);
 };
 
