@@ -235,7 +235,7 @@ const NavBar = (props) => {
       <AppBar position="static" style={{ background: 'transparent', boxShadow: 'none'}} elevation={1}>
         <Toolbar className={classes.appBarWrapper} >
           <Typography variant="h6" className={classes.guestTitle} color='inherit'>
-            <img alt="Jots" height='65px' style={{ boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.50)'}} src={LogoSrc} className={classes.image}/>
+            <img alt="Jots" height='65px' src={LogoSrc} className={classes.image}/>
           </Typography>
           <div className={classes.grow}/>
           

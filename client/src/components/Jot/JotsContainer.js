@@ -2,7 +2,7 @@ import React, { useEffect, useContext } from 'react';
 import { jotContext } from '../context/jotStore';
 import Axios from 'axios';
 import JotCard from './JotCard';
-import { Grid } from '@material-ui/core'
+import { div } from '@material-ui/core'
 
 const JotsContainer = (props) => {
 	const [ state, dispatch ] = useContext(jotContext);
@@ -66,18 +66,13 @@ const JotsContainer = (props) => {
 	const readJot = async (jot) => {
 		dispatch({ type: 'READJOT', payload: jot });
 	};
-
-// 	git branch -m master main
-// git fetch origin
-// git branch -u origin/main main
-	
-	
 	
 	return (
 		<>
 				{state.jots.map((jot) => (
-					<Grid item 
-					xs={12} sm={4} 
+					<div item 
+					style={{maxWidth:'35%'}}
+					// xs={12} sm={4} 
 					>
 					<JotCard
 						key={jot.id}
@@ -87,7 +82,7 @@ const JotsContainer = (props) => {
 						readJot={readJot}
 						selectJot={props.selectJot}
 					/>
-					</Grid>
+					</div>
 				))}
 		</>
 	);

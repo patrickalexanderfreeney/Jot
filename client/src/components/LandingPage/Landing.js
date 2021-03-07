@@ -35,7 +35,7 @@ const Landing = () => {
 
 	return (
 		<Grid container>
-			<Grid item style={{border:'5px solid red', width:'100%'}}>	
+			<Grid item style={{ width:'100%'}}>	
 			<NavBar/>
 
 			</Grid>
